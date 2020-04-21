@@ -1,0 +1,216 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "variables";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+body {
+    font-family: 'Open Sans', SansSerif;
+    font-size: $font-size-base * .85;
+    @include media-breakpoint-up(md) {
+        font-size: $font-size-base * .9;
+    }
+    @include media-breakpoint-up(lg) {
+        font-size: $font-size-base;
+    }
+}
+
+.sidebar {
+    background: $white;
+    height: 100vh;
+    width: 70px;
+}
+
+.btn, button {
+    @include border-radius($input-border-radius, 0);
+    &:focus, &:active {
+        box-shadow: none !important;
+        outline: none;
+    }
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+    label {
+        position: absolute;
+        top: 0rem;
+        left: 0.75rem;
+        line-height: 38px;
+        margin: 0rem;
+        transition: 0.1s all;
+        color: $gray-500;
+    }
+    .form-control {
+        @include border-radius($input-border-radius, 0);
+        &:focus {
+            box-shadow: none;
+            border-color: $gray-600;
+        }
+        &:not(:placeholder-shown) ~ label, &:focus + label {
+            top: -5px;
+            left: 0.5rem;
+            background: $white;
+            padding: 0 0.25rem;
+            line-height: $font-size-sm;
+            font-size: $font-size-sm;
+            color: $gray-600;
+        }
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+        }
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}
+
+.custom-control-input {
+    &:checked ~ .custom-control-label::before {
+        border-color: $green;
+        @include gradient-bg($green);
+        box-shadow: none;
+    }
+    &:focus ~ .custom-control-label::before {
+        box-shadow: none;
+    }
+}
+
+.custom-control-label {
+    line-height: 24px;
+}
+
+main {
+    width: 100%;
+    box-shadow: -5px 0 10px 0 $gray-100;
+    @include media-breakpoint-up(md) {
+        width: calc(100% - 60px);
+    }
+    .logo {
+        margin: auto;
+        max-width: 48px;
+    }
+    .watchlist {
+        min-height: calc(100vh - 16px);
+        position: relative;
+        .streaming-table {
+            thead {
+                th {
+                    outline: none;
+                    cursor: pointer;
+                    background-repeat: no-repeat;
+                    background-position: center right;
+                }
+                .sorting {
+                    background-image: url("../images/sort_both.png");
+                }
+
+                .sorting_asc {
+                    background-image: url("../images/sort_asc.png");
+                }
+
+                .sorting_desc {
+                    background-image: url("../images/sort_desc.png");
+                }
+
+                .sorting_asc_disabled {
+                    background-image: url("../images/sort_asc_disabled.png");
+                }
+
+                .sorting_desc_disabled {
+                    background-image: url("../images/sort_desc_disabled.png");
+                }
+            }
+            tbody {
+                tr {
+                    border-top: 1px solid $gray-200;
+                    transition: 0.1s all;
+                    &:hover {
+                        background: #fffbfa;
+                    }
+                }
+            }
+            td {
+                vertical-align: middle;
+                white-space: nowrap;
+                img {
+                    display: inline;
+                }
+            }
+        }
+        .dataTables_filter {
+            .form-control {
+                max-width: 200px;
+            }
+        }
+        .btn-add-script {
+            img {
+                height: 15px;
+            }
+        }
+        .slick-dots {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #e9ecef;
+            border-bottom: 0;
+            border-right: 0;
+            width: calc(100% + 30px);
+            position: absolute;
+            left: -15px;
+            bottom: 0;
+            li {
+                padding: 10px 20px;
+                border-right: 1px solid #e9ecef;
+                cursor: pointer;
+                &.slick-active {
+                    background: rgba($primary, .02);
+                    color: $primary;
+                }
+            }
+        }
+    }
+}
+
+.modal-dialog {
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    @include media-breakpoint-up(sm) {
+        display: block;
+        margin: 1.75rem auto;
+    }
+    .modal-content {
+        border-radius: 0.75rem 0.75rem 0 0;
+        @include media-breakpoint-up(sm) {
+            border-radius: 0.3rem;
+        }
+    }
+    .modal.fade & {
+        @include transition($modal-transition);
+        transform: $modal-fade-transform;
+        @include media-breakpoint-up(md) {
+            transform: $modal-fade-transform-md;
+        }
+    }
+    .modal.show & {
+        transform: $modal-show-transform;
+    }
+}
+.dataTables_paginate {
+  display: flex;
+  justify-content: flex-end;
+}
+.version-info {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: #aaa;
+    line-height: 16px;
+}

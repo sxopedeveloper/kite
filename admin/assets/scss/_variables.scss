@@ -1,0 +1,19 @@
+$enable-gradients: true !default;
+
+// Colors
+$primary: #ff5722;
+$light: #fffdfd;
+
+// Type
+$font-size-base: 1rem !default;
+$font-size-sm: $font-size-base * .75 !default;
+$small-font-size: 80%;
+
+// Form Controls
+$border-radius-sm: 0.15rem;
+$input-border-radius: $border-radius-sm;
+
+// Modals
+$modal-transition: transform .1s ease-out !default;
+$modal-fade-transform: translateY(100%);
+$modal-fade-transform-md: scale(.5);
