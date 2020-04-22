@@ -29,11 +29,24 @@ class Client extends CI_Controller
 		$title['title'] = "Dashboard"; 
 		$this->load->view('client/design/header',$title);
 		$this->load->view('client/design/nav');
-		$data['instrument_token'] = $this->db->query("SELECT * FROM mytable WHERE admin_access = 1 ")->result();
+		$data['list'] = $this->db->query("SELECT list FROM watch_list WHERE client_id = 8 ")->result();
+		$data['list2'] = $this->db->query("SELECT list2 FROM watch_list WHERE client_id = 8 ")->result();
 		$this->load->view('client/dash',$data);
 		$this->load->view('client/design/footer');
 		// $this->load->view('client/layout/footer');
 
+	}
+
+	public function streaming(){
+
+				$term = $this->input->get('search');
+				// $inst_type = $this->input->get('inst_type');
+				// $exchange = $this->input->get('exchange');
+				// $segment = $this->input->get('segm');
+				$query = "SELECT * FROM mytable WHERE admin_access = 1 LIKE '%".$term."%' LIMIT 10 ";
+				$data = $this->db->query($query)->result();
+				print_r(json_encode($data));
+			
 	}
 
 	public function create_client(){

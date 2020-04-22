@@ -175,19 +175,11 @@ class Dashboard extends CI_Controller
 	}
 
 	public function ref_strem(){
-		if($this->ion_auth->get_user_id()==5){
-				$query = "SELECT instrument_token FROM mytable WHERE admin_access = 1";
-				$data = $this->db->query($query)->result();
-				print_r(json_encode($data));
-			}elseif($this->ion_auth->get_user_id()==1){
-				$query = "SELECT instrument_token FROM mytable WHERE admin_access = 1";
-				$data = $this->db->query($query)->result();
-				print_r(json_encode($data));
-			}else{
+		
 				$query = "SELECT instrument_token FROM mytable WHERE admin_access = 1 ";
 				$data = $this->db->query($query)->result();
 				print_r(json_encode($data));
-			}
+		
 	}
 
 

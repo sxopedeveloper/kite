@@ -30,5 +30,6 @@
 
 		</div>
 		<div class="header-search">
-			<input type="text" id="fname" placeholder="ADD SCRIPT" name="fname">
+			<!-- <input type="text" id="fname" placeholder="ADD SCRIPT" name="fname"> -->
+            <select id="fname" class="js-data-example-ajax form-control"></select>
 		</div>

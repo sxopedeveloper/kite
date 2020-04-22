@@ -148,7 +148,7 @@
     </script>
 
 <script>
-var ticker = new KiteTicker({api_key: "kjllz3s85ak07q7a", access_token: "wELgGlIICOv5SPjydfl1h8l0iclscK6S"});
+var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "yDgX71OqsSv1BSWh8SdB7h5wLS3Lx0EP"});
 ticker.connect();
 ticker.on("ticks", onTicks);
 ticker.on("connect", subscribe);

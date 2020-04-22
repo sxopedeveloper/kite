@@ -48,11 +48,21 @@
                 </thead>
                 <tbody>
                     <?php
-                            foreach ($instrument_token as $inst) {
-                    echo "<tr id='".$inst->instrument_token."'>
+                    // echo json_encode($instrument_token[0]->list);
+                    // print_r($instrument_token[0]);
+                    $a=json_decode($list[0]->list);
+                    // for ($i=0; $i < sizeof($b->{'list'}); $i++) { 
+                    //         print_r($b->{'list'}[$i]->{'name'});
+                    //         print_r($b->{'list'}[$i]->{'token'});
+                    //         echo "<br />";
+                    // }
+                    // die();
+                    for ($i=0; $i < sizeof($a->{'list'}); $i++) { 
+                               
+                    echo "<tr id='".$a->{'list'}[$i]->{'token'}."'>
                             <td >
-                                <span class='d-block script_name'>".$inst->tradingsymbol."</span>
-                                <span class='d-block small script_ex'>(".$inst->exchange.")</span>
+                                <span class='d-block script_name'>".$a->{'list'}[$i]->{'name'}."</span>
+                                <span class='d-block small script_ex'>(".$a->{'list'}[$i]->{'token'}.")</span>
                             </td>
                             <td>
                                 <span class='d-block text-danger'><img src=".base_url()."'assets/images/caret-down.svg' alt=''/> <span class='ltp'>4150.00</span></span>
@@ -116,11 +126,15 @@
                 </thead>
                 <tbody>
                     <?php
-                            foreach ($instrument_token as $inst) {
-                    echo "<tr id='".$inst->instrument_token."'>
+                    $b=json_decode($list2[0]->list2);
+                    
+
+                    for ($i=0; $i < sizeof($b->{'list'}); $i++) { 
+                               
+                    echo "<tr id='".$b->{'list'}[$i]->{'token'}."'>
                             <td >
-                                <span class='d-block script_name'>".$inst->tradingsymbol."</span>
-                                <span class='d-block small script_ex'>(".$inst->exchange.")</span>
+                                <span class='d-block script_name'>".$b->{'list'}[$i]->{'name'}."</span>
+                                <span class='d-block small script_ex'>(".$b->{'list'}[$i]->{'token'}.")</span>
                             </td>
                             <td>
                                 <span class='d-block text-danger'><img src=".base_url()."'assets/images/caret-down.svg' alt=''/> <span class='ltp'>4150.00</span></span>

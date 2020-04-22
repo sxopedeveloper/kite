@@ -254,97 +254,142 @@
 				    integrity="sha256-4sETKhh3aSyi6NRiA+qunPaTawqSMDQca/xLWu27Hg4=" crossorigin="anonymous"></script>
 				<script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 				<script src="<?php echo base_url(); ?>assets/js/ticker.js"></script>
-				<script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
 				<script type="text/javascript">
-					feather.replace()
+					var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "yDgX71OqsSv1BSWh8SdB7h5wLS3Lx0EP"});
+					ticker.connect();
+					ticker.on("ticks", onTicks);
+					ticker.on("connect", subscribe);
+
+					function onTicks(ticks) {
+					    var color1 = "#dc3545";
+					    var color2 = "#28a745";
+					    $.each(ticks, function(key, value) {
+
+					        if (($("#" + value.instrument_token).find(".ltp").text()) > value.last_price) {
+					            $("#" + value.instrument_token).find(".ltp").css('color', color1);
+					        } else if (($("#" + value.instrument_token).find(".ltp").text()) < value.last_price) {
+					            $("#" + value.instrument_token).find(".ltp").css('color', color2);
+					        } else {
+					            $("#" + value.instrument_token).find(".ltp").css('color', '#666');
+					        }
+
+
+
+					        if (($("#" + value.instrument_token).find(".sell_p").text()) > value.last_price) {
+					            $("#" + value.instrument_token).find(".sell_p").css('color', color1);
+					        } else if (($("#" + value.instrument_token).find(".sell_p").text()) < value.last_price) {
+					            $("#" + value.instrument_token).find(".sell_p").css('color', color2);
+					        } else {
+					            $("#" + value.instrument_token).find(".sell_p").css('color', '#666');
+					        }
+
+
+
+					        if (($("#" + value.instrument_token).find(".buy_p").text()) > value.last_price) {
+					            $("#" + value.instrument_token).find(".buy_p").css('color', color1);
+					        } else if (($("#" + value.instrument_token).find(".buy_p").text()) < value.last_price) {
+					            $("#" + value.instrument_token).find(".buy_p").css('color', color2);
+					        } else {
+					            $("#" + value.instrument_token).find(".buy_p").css('color', '#666');
+					        }
+
+					        $("#" + value.instrument_token).find('.ltp').text(((value.last_price).toFixed(2)));
+					        $("#" + value.instrument_token).find('.sell_q').text(value.sell_quantity);
+					        $("#" + value.instrument_token).find('.buy_q').text(value.buy_quantity);
+					        $("#" + value.instrument_token).find('.buy_p').text(((value.depth.buy[0].price).toFixed(2)));
+					        $("#" + value.instrument_token).find('.sell_p').text(((value.depth.sell[0].price).toFixed(2)));
+					        $("#" + value.instrument_token).find('.high').text(((value.ohlc.high).toFixed(2)));
+					        $("#" + value.instrument_token).find('.low').text(((value.ohlc.low).toFixed(2)));
+					        $("#" + value.instrument_token).find('.sopen').text(((value.ohlc.open).toFixed(2)));
+					        $("#" + value.instrument_token).find('.sclose').text(((value.ohlc.close).toFixed(2)));
+					        $("#" + value.instrument_token).find('.chngrs').text(((value.change).toFixed(2)));
+					        $("#" + value.instrument_token).find('.chng').text(((value.last_price) * (value.change) / 100).toFixed(
+					            2));
+
+					        // Model 
+					        $("#myModal").find("#mod_tab tr").find("#" + value.instrument_token).find('.buy_p').text(((value.depth
+					            .buy[0].price).toFixed(2)));
+					        $("#myModal").find("#mod_tab tr").find("#" + value.instrument_token).find('.sell_p').text(((value.depth
+					            .buy[0].price).toFixed(2)));
+
+					        $("#myModal").find("." + value.instrument_token).find('.ltp').text(((value.last_price).toFixed(2)));
+
+
+
+
+
+					        //console.log(value.instrument_token);
+					    });
+					    //console.log("Ticks", ticks);
+					}
+
+					function subscribe() {
+					    var items = [];
+					    i = 0;
+					    $.ajax({
+					        url: '<?php echo base_url();?>index.php/dashboard/ref_strem',
+					        dataType: 'json',
+					        type: "GET",
+					        success: function(data) {
+					            jQuery.each(data, function(index, itemData) {
+					                items[i++] = parseInt(itemData.instrument_token);
+					            });
+					            // console.log(items);
+					            ticker.subscribe(items);
+					            ticker.setMode(ticker.modeFull, items);
+
+					        }
+					    });
+					}
 				</script>
 				<script type="text/javascript">
-					var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "7dVET5B1VR3z0mP1SC72l74emjJlZC6T"});
-ticker.connect();
-ticker.on("ticks", onTicks);
-ticker.on("connect", subscribe);
 
-function onTicks(ticks) {
-    var color1 = "#dc3545";
-    var color2 = "#28a745";
-    $.each(ticks, function(key, value) {
+						// $("#addNew").click(function(){
+		    //               var token = $(".js-data-example-ajax").val();
+		    //               add_script(token);
+		    //               var name = ""; 
+		    //               name = $(".js-data-example-ajax").text();
+		    //               name = name.replace("NSE","");
+		    //               name = name.replace("BSE","");
+		    //               name = name.replace("MCX","");
+		    //               $('#streamingTable1').append('<tr id='+token+'><td><i class="fa fa-trash"></i></td><td>'+name+'</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+		    //               $(".js-data-example-ajax").empty();
+		    //             });
+		    			$("#streamingTable1 >tbody").click(function(){
 
-        if (($("#" + value.instrument_token).find(".ltp").text()) > value.last_price) {
-            $("#" + value.instrument_token).find(".ltp").css('color', color1);
-        } else if (($("#" + value.instrument_token).find(".ltp").text()) < value.last_price) {
-            $("#" + value.instrument_token).find(".ltp").css('color', color2);
-        } else {
-            $("#" + value.instrument_token).find(".ltp").css('color', '#666');
-        }
+							console.log("Trade");
+		    				$("#menu-settings").modal("show");
+		    			});
 
-
-
-        if (($("#" + value.instrument_token).find(".sell_p").text()) > value.last_price) {
-            $("#" + value.instrument_token).find(".sell_p").css('color', color1);
-        } else if (($("#" + value.instrument_token).find(".sell_p").text()) < value.last_price) {
-            $("#" + value.instrument_token).find(".sell_p").css('color', color2);
-        } else {
-            $("#" + value.instrument_token).find(".sell_p").css('color', '#666');
-        }
-
-
-
-        if (($("#" + value.instrument_token).find(".buy_p").text()) > value.last_price) {
-            $("#" + value.instrument_token).find(".buy_p").css('color', color1);
-        } else if (($("#" + value.instrument_token).find(".buy_p").text()) < value.last_price) {
-            $("#" + value.instrument_token).find(".buy_p").css('color', color2);
-        } else {
-            $("#" + value.instrument_token).find(".buy_p").css('color', '#666');
-        }
-
-        $("#" + value.instrument_token).find('.ltp').text(((value.last_price).toFixed(2)));
-        $("#" + value.instrument_token).find('.sell_q').text(value.sell_quantity);
-        $("#" + value.instrument_token).find('.buy_q').text(value.buy_quantity);
-        $("#" + value.instrument_token).find('.buy_p').text(((value.depth.buy[0].price).toFixed(2)));
-        $("#" + value.instrument_token).find('.sell_p').text(((value.depth.sell[0].price).toFixed(2)));
-        $("#" + value.instrument_token).find('.high').text(((value.ohlc.high).toFixed(2)));
-        $("#" + value.instrument_token).find('.low').text(((value.ohlc.low).toFixed(2)));
-        $("#" + value.instrument_token).find('.sopen').text(((value.ohlc.open).toFixed(2)));
-        $("#" + value.instrument_token).find('.sclose').text(((value.ohlc.close).toFixed(2)));
-        $("#" + value.instrument_token).find('.chngrs').text(((value.change).toFixed(2)));
-        $("#" + value.instrument_token).find('.chng').text(((value.last_price) * (value.change) / 100).toFixed(
-            2));
-
-        // Model 
-        $("#myModal").find("#mod_tab tr").find("#" + value.instrument_token).find('.buy_p').text(((value.depth
-            .buy[0].price).toFixed(2)));
-        $("#myModal").find("#mod_tab tr").find("#" + value.instrument_token).find('.sell_p').text(((value.depth
-            .buy[0].price).toFixed(2)));
-
-        $("#myModal").find("." + value.instrument_token).find('.ltp').text(((value.last_price).toFixed(2)));
-
-
-
-
-
-        //console.log(value.instrument_token);
-    });
-    //console.log("Ticks", ticks);
-}
-
-function subscribe() {
-    var items = [];
-    i = 0;
-    $.ajax({
-        url: '<?php echo base_url();?>index.php/dashboard/ref_strem',
-        dataType: 'json',
-        type: "GET",
-        success: function(data) {
-            jQuery.each(data, function(index, itemData) {
-                items[i++] = parseInt(itemData.instrument_token);
-            });
-            console.log(items);
-            ticker.subscribe(items);
-            ticker.setMode(ticker.modeFull, items);
-
-        }
-    });
-}
+						$('.js-data-example-ajax').select2({
+			              minimumInputLength: 2,
+			              ajax: {
+			                  url: '<?php echo base_url();?>index.php/Client/streaming',
+			                  dataType: 'json',
+			                  type: "GET",
+			                  quietMillis: 50,
+			                  data: function (params) {
+			                    var query = {
+			                      segm: $("#segment").val(),
+			                      search: params.term
+			                    }
+			                    // Query parameters will be ?search=[term]&type=public
+			                    return query;
+			                  },
+			                  processResults: function (data) {
+			                    return {
+			                        results: $.map(data, function (item) {
+			                          //console.log(item);
+			                            return {
+			                                text: item.segment+" "+item.tradingsymbol,
+			                                slug: item.segment,
+			                                id: item.instrument_token
+			                            }
+			                        })
+			                    };
+			                }
+			              }
+			            });
 				</script>
 				</body>
 
