@@ -6,11 +6,8 @@
             </div>
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-             <select id="fname" class="js-data-example-ajax form-control">
-                 <option>option 1</option>
-                 <option>option 2</option>
-                 <option>option 3</option>
-             </select>
+             <select id="fn_2ame" class="js-data-example-ajax- form-control"></select>
+             <select class="js-data-example-ajax form-control"></select>
   <!--   <div data-height="130" class="caption caption-margins round-medium shadow-huge" style="height: 130px;">
         <div class="caption-center right-15 top-15 text-right">
             <a href="#" class="back-button button button-xs button-round-huge bg-highlight">Back Home</a>
@@ -129,12 +126,8 @@
         </div>
     </div>
 
-    <div class="swiper-slide">
+    <!-- <div class="swiper-slide">
          <select id="fname" class="js-data-example-ajax form-control">
-                <option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
          </select>
         <div class="table-responsive tab-inner">
             <table class="streaming-table table table-borderless" id="streamingTable2">
@@ -235,7 +228,7 @@
 
         </div>
         </div>
-    </div>
+    </div> -->
 <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
     </div>

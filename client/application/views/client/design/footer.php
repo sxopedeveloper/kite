@@ -242,8 +242,8 @@
 				<script type="text/javascript" src="<?php echo base_url();?>assets/newDesign/scripts/jquery.js"></script>
 				<script type="text/javascript" src="<?php echo base_url();?>assets/newDesign/scripts/plugins.js"></script>
 				<script type="text/javascript" src="<?php echo base_url();?>assets/newDesign/scripts/custom.js"></script>
-				<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-				    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- 				<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+				    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
 				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 				    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 				</script>
@@ -361,10 +361,10 @@
 		    				$('.menu-hider').addClass("menu-active");
 		    			});
 
-						$('.js-data-example-ajax').select2({
-			              minimumInputLength: 2,
+						$('#fn_2ame').select2({
+              				minimumInputLength: 2,
 			              ajax: {
-			                  url: '<?php echo base_url();?>index.php/Client/streaming',
+			                  url: '<?php echo base_url();?>/Client/streaming',
 			                  dataType: 'json',
 			                  type: "GET",
 			                  quietMillis: 50,
@@ -377,9 +377,9 @@
 			                    return query;
 			                  },
 			                  processResults: function (data) {
-			                    return {
+			                  	return {
 			                        results: $.map(data, function (item) {
-			                          console.log(item);
+			                           console.log(item);
 			                            return {
 			                                text: item.segment+" "+item.tradingsymbol,
 			                                slug: item.segment,
@@ -389,7 +389,38 @@
 			                    };
 			                }
 			              }
+
+
 			            });
+
+			            $('.js-data-example-ajax').select2({
+					              minimumInputLength: 2,
+					              ajax: {
+					                  url: '<?php echo base_url();?>index.php/Dashboard/streaming',
+					                  dataType: 'json',
+					                  type: "GET",
+					                  quietMillis: 50,
+					                  data: function (params) {
+					                    var query = {
+					                      search: params.term
+					                    }
+					                    // Query parameters will be ?search=[term]&type=public
+					                    return query;
+					                  },
+					                  processResults: function (data) {
+					                    return {
+					                        results: $.map(data, function (item) {
+					                          //console.log(item);
+					                            return {
+					                                text: item.exchange+" "+item.name,
+					                                slug: item.exchange,
+					                                id: item.instrument_token
+					                            }
+					                        })
+					                    };
+					                }
+					              }
+					            });
 				</script>
 				</body>
 
