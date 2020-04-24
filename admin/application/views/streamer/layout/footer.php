@@ -84,7 +84,7 @@
 
   
 <script type="text/javascript">
-var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "yDgX71OqsSv1BSWh8SdB7h5wLS3Lx0EP"});
+var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "QuCIOLLC454YxoF0eKR1v6FS6PPCaYl9"});
 ticker.connect();
 ticker.on("ticks", onTicks);
 ticker.on("connect", subscribe);
@@ -145,7 +145,7 @@ function subscribe() {
               jQuery.each(data, function(index, itemData) {
                 items[i++] = parseInt(itemData.instrument_token);
               });
-              console.log(items);
+              // console.log(items);
               ticker.subscribe(items);
               ticker.setMode(ticker.modeFull, items);
 

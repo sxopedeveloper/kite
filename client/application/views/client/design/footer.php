@@ -34,6 +34,7 @@
 				        </div>
 				    </div>
 				</div>
+
 				<div id="menu-settings" class="menu menu-box-bottom menu-box-detached round-large" 
 				    data-menu-effect="menu-over" data-menu-height="310">
 				    <div class="content bottom-0">
@@ -81,7 +82,7 @@
 				        </div>
 				    </div>
 				</div>
-				</div>
+				
 				<div id="menu-highlights" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="380"
 				    data-menu-effect="menu-over">
 				    <div class="content bottom-0">
@@ -255,7 +256,7 @@
 				<script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 				<script src="<?php echo base_url(); ?>assets/js/ticker.js"></script>
 				<script type="text/javascript">
-					var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "yDgX71OqsSv1BSWh8SdB7h5wLS3Lx0EP"});
+					var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "QuCIOLLC454YxoF0eKR1v6FS6PPCaYl9"});
 					ticker.connect();
 					ticker.on("ticks", onTicks);
 					ticker.on("connect", subscribe);
@@ -331,10 +332,10 @@
 					        dataType: 'json',
 					        type: "GET",
 					        success: function(data) {
+					            console.log(data);
 					            jQuery.each(data, function(index, itemData) {
 					                items[i++] = parseInt(itemData.instrument_token);
 					            });
-					            // console.log(items);
 					            ticker.subscribe(items);
 					            ticker.setMode(ticker.modeFull, items);
 
@@ -356,9 +357,8 @@
 		    //               $(".js-data-example-ajax").empty();
 		    //             });
 		    			$("#streamingTable1 >tbody").click(function(){
-
-							console.log("Trade");
-		    				$("#menu-settings").modal("show");
+		    				$("#menu-settings").addClass("menu-active");
+		    				$('.menu-hider').addClass("menu-active");
 		    			});
 
 						$('.js-data-example-ajax').select2({
@@ -370,7 +370,7 @@
 			                  quietMillis: 50,
 			                  data: function (params) {
 			                    var query = {
-			                      segm: $("#segment").val(),
+			                      // segm: $("#segment").val(),
 			                      search: params.term
 			                    }
 			                    // Query parameters will be ?search=[term]&type=public
@@ -379,7 +379,7 @@
 			                  processResults: function (data) {
 			                    return {
 			                        results: $.map(data, function (item) {
-			                          //console.log(item);
+			                          console.log(item);
 			                            return {
 			                                text: item.segment+" "+item.tradingsymbol,
 			                                slug: item.segment,

@@ -56,6 +56,9 @@ $('.watchlist').slick({
   // $("#demo").dataTable({
   //       paging: true
   //   });
+  // $('.header-icon-5').click(function(){
+  //       $('.header-search').toggleClass('active-search')
+  // }); 
   $('.header-icon-5').click(function(){
-        $('.header-search').toggleClass('active-search')
+        $('.swiper-slide-active #fname').toggleClass('active-select')
   });

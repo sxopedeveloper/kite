@@ -166,3 +166,11 @@ main {
 .d-block{
   display: block !important;
 }
+.swiper-slide{
+  flex-wrap: wrap;
+}
+#fname{
+  flex: 0 0 100%;
+  max-width: 70%;
+    margin-top: 30px;
+}

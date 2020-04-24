@@ -43,7 +43,11 @@ class Client extends CI_Controller
 				// $inst_type = $this->input->get('inst_type');
 				// $exchange = $this->input->get('exchange');
 				// $segment = $this->input->get('segm');
-				$query = "SELECT * FROM mytable WHERE admin_access = 1 LIKE '%".$term."%' LIMIT 10 ";
+				// $query = "SELECT * FROM mytable  LIMIT 10 ";
+				// $data = $this->db->query($query)->result();
+				// print_r(json_encode($data));
+
+				$query = "SELECT * FROM mytable WHERE tradingsymbol LIKE '%".$term."%' LIMIT 25 ";
 				$data = $this->db->query($query)->result();
 				print_r(json_encode($data));
 			

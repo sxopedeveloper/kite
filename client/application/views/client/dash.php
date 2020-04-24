@@ -1,7 +1,16 @@
     <div class="page-content header-clear-medium tab-main">
         <div class="swiper-container table-slide">
+            <div class="header-search">
+                <!-- <input type="text" id="fname" placeholder="ADD SCRIPT" name="fname"> -->
+               
+            </div>
     <div class="swiper-wrapper">
         <div class="swiper-slide">
+             <select id="fname" class="js-data-example-ajax form-control">
+                 <option>option 1</option>
+                 <option>option 2</option>
+                 <option>option 3</option>
+             </select>
   <!--   <div data-height="130" class="caption caption-margins round-medium shadow-huge" style="height: 130px;">
         <div class="caption-center right-15 top-15 text-right">
             <a href="#" class="back-button button button-xs button-round-huge bg-highlight">Back Home</a>
@@ -47,25 +56,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    // echo json_encode($instrument_token[0]->list);
-                    // print_r($instrument_token[0]);
-                    $a=json_decode($list[0]->list);
-                    // for ($i=0; $i < sizeof($b->{'list'}); $i++) { 
-                    //         print_r($b->{'list'}[$i]->{'name'});
-                    //         print_r($b->{'list'}[$i]->{'token'});
-                    //         echo "<br />";
-                    // }
-                    // die();
-                    for ($i=0; $i < sizeof($a->{'list'}); $i++) { 
-                               
-                    echo "<tr id='".$a->{'list'}[$i]->{'token'}."'>
+                    <tr id="5633">
                             <td >
-                                <span class='d-block script_name'>".$a->{'list'}[$i]->{'name'}."</span>
-                                <span class='d-block small script_ex'>(".$a->{'list'}[$i]->{'token'}.")</span>
+                                <span class='d-block script_name'>ACC</span>
+                                <span class='d-block small script_ex'>(NSE)</span>
                             </td>
                             <td>
-                                <span class='d-block text-danger'><img src=".base_url()."'assets/images/caret-down.svg' alt=''/> <span class='ltp'>4150.00</span></span>
+                                <span class='d-block text-danger'><img src=""> <span class='ltp'>4150.00</span></span>
                                 <span class='d-block small text-muted'><span class='chng'>0.00</span> (<span class='chngrs'>0.00</span>%)</span>
                             </td>
                             <td class='text-success'>
@@ -77,15 +74,54 @@
                                 <span class='d-block small'>(<span class='sell_q'>0.00</span>)</span>
                             </td>
                             <td>
-                                <span class='d-block small text-success'><img src='images/caret-up.svg' alt=''/> <span class='high'>0.00</span></span>
-                                <span class='d-block small text-danger'><img src='images/caret-down.svg' alt=''/> <span class='low'>0.00</span></span>
+                                <span class='d-block small text-success'><img src='#' alt=''/> <span class='high'>0.00</span></span>
+                                <span class='d-block small text-danger'><img src='#' alt=''/> <span class='low'>0.00</span></span>
                             </td>
                             <td>
                                 <span class='d-block small'><span class='sopen'>0.00</span></span>
                                 <span class='d-block small'><span class='sclose'>0.00</span></span>
                             </td>
-                        </tr>";
-                            }
+                        </tr>
+                    <?php
+
+                    // echo json_encode($instrument_token[0]->list);
+                    // print_r($instrument_token[0]);
+                    //  $a=json_decode($list[0]->list);
+                    // for ($i=0; $i < sizeof($b->{'list'}); $i++) { 
+                    //         print_r($b->{'list'}[$i]->{'name'});
+                    //         print_r($b->{'list'}[$i]->{'token'});
+                    //         echo "<br />";
+                    // }
+                    // die();
+                    // for ($i=0; $i < sizeof($a->{'list'}); $i++) { 
+                               
+                    // echo "<tr id='".$a->{'list'}[$i]->{'token'}."'>
+                    //         <td >
+                    //             <span class='d-block script_name'>".$a->{'list'}[$i]->{'name'}."</span>
+                    //             <span class='d-block small script_ex'>(".$a->{'list'}[$i]->{'token'}.")</span>
+                    //         </td>
+                    //         <td>
+                    //             <span class='d-block text-danger'><img src=".base_url()."#' alt=''/> <span class='ltp'>4150.00</span></span>
+                    //             <span class='d-block small text-muted'><span class='chng'>0.00</span> (<span class='chngrs'>0.00</span>%)</span>
+                    //         </td>
+                    //         <td class='text-success'>
+                    //             <span class='d-block'><span class='buy_p'>0.00</span></span>
+                    //             <span class='d-block small'>(<span class='buy_q'>0.00</span>)</span>
+                    //         </td>
+                    //         <td class='text-danger'>
+                    //             <span class='d-block'><span class='sell_p'>0.00</span></span>
+                    //             <span class='d-block small'>(<span class='sell_q'>0.00</span>)</span>
+                    //         </td>
+                    //         <td>
+                    //             <span class='d-block small text-success'><img s#' alt=''/> <span class='high'>0.00</span></span>
+                    //             <span class='d-block small text-danger'><img s#' alt=''/> <span class='low'>0.00</span></span>
+                    //         </td>
+                    //         <td>
+                    //             <span class='d-block small'><span class='sopen'>0.00</span></span>
+                    //             <span class='d-block small'><span class='sclose'>0.00</span></span>
+                    //         </td>
+                    //     </tr>";
+                    //         }
                         ?>
                 </tbody>
             </table>
@@ -94,6 +130,12 @@
     </div>
 
     <div class="swiper-slide">
+         <select id="fname" class="js-data-example-ajax form-control">
+                <option>option 1</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+         </select>
         <div class="table-responsive tab-inner">
             <table class="streaming-table table table-borderless" id="streamingTable2">
                 <thead class="text-black-50 small">
@@ -125,19 +167,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    $b=json_decode($list2[0]->list2);
-                    
-
-                    for ($i=0; $i < sizeof($b->{'list'}); $i++) { 
-                               
-                    echo "<tr id='".$b->{'list'}[$i]->{'token'}."'>
+                     <tr id="3050241">
                             <td >
-                                <span class='d-block script_name'>".$b->{'list'}[$i]->{'name'}."</span>
-                                <span class='d-block small script_ex'>(".$b->{'list'}[$i]->{'token'}.")</span>
+                                <span class='d-block script_name'>YESBANK</span>
+                                <span class='d-block small script_ex'>(NSE)</span>
                             </td>
                             <td>
-                                <span class='d-block text-danger'><img src=".base_url()."'assets/images/caret-down.svg' alt=''/> <span class='ltp'>4150.00</span></span>
+                                <span class='d-block text-danger'><img src=""> <span class='ltp'>4150.00</span></span>
                                 <span class='d-block small text-muted'><span class='chng'>0.00</span> (<span class='chngrs'>0.00</span>%)</span>
                             </td>
                             <td class='text-success'>
@@ -149,15 +185,50 @@
                                 <span class='d-block small'>(<span class='sell_q'>0.00</span>)</span>
                             </td>
                             <td>
-                                <span class='d-block small text-success'><img src='images/caret-up.svg' alt=''/> <span class='high'>0.00</span></span>
-                                <span class='d-block small text-danger'><img src='images/caret-down.svg' alt=''/> <span class='low'>0.00</span></span>
+                                <span class='d-block small text-success'><img src='#' alt=''/> <span class='high'>0.00</span></span>
+                                <span class='d-block small text-danger'><img src='#' alt=''/> <span class='low'>0.00</span></span>
                             </td>
                             <td>
                                 <span class='d-block small'><span class='sopen'>0.00</span></span>
                                 <span class='d-block small'><span class='sclose'>0.00</span></span>
                             </td>
-                        </tr>";
-                            }
+                        </tr>
+                    <?php
+                    // print_r($list2[0]->list2);
+
+                    // die();
+                    // $b=json_decode($list2[0]->list2);
+                    
+
+                    // for ($i=0; $i < sizeof($b->{'list'}); $i++) { 
+                               
+                    // echo "<tr id='".$b->{'list'}[$i]->{'token'}."'>
+                    //         <td >
+                    //             <span class='d-block script_name'>".$b->{'list'}[$i]->{'name'}."</span>
+                    //             <span class='d-block small script_ex'>(".$b->{'list'}[$i]->{'token'}.")</span>
+                    //         </td>
+                    //         <td>
+                    //             <span class='d-block text-danger'><img src=".base_url()."#' alt=''/> <span class='ltp'>4150.00</span></span>
+                    //             <span class='d-block small text-muted'><span class='chng'>0.00</span> (<span class='chngrs'>0.00</span>%)</span>
+                    //         </td>
+                    //         <td class='text-success'>
+                    //             <span class='d-block'><span class='buy_p'>0.00</span></span>
+                    //             <span class='d-block small'>(<span class='buy_q'>0.00</span>)</span>
+                    //         </td>
+                    //         <td class='text-danger'>
+                    //             <span class='d-block'><span class='sell_p'>0.00</span></span>
+                    //             <span class='d-block small'>(<span class='sell_q'>0.00</span>)</span>
+                    //         </td>
+                    //         <td>
+                    //             <span class='d-block small text-success'><img s#' alt=''/> <span class='high'>0.00</span></span>
+                    //             <span class='d-block small text-danger'><img s#' alt=''/> <span class='low'>0.00</span></span>
+                    //         </td>
+                    //         <td>
+                    //             <span class='d-block small'><span class='sopen'>0.00</span></span>
+                    //             <span class='d-block small'><span class='sclose'>0.00</span></span>
+                    //         </td>
+                    //     </tr>";
+                    //         }
                         ?>
                 </tbody>
             </table>

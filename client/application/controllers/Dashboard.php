@@ -176,9 +176,21 @@ class Dashboard extends CI_Controller
 
 	public function ref_strem(){
 		
-				$query = "SELECT instrument_token FROM mytable WHERE admin_access = 1 ";
+				// $query = "SELECT instrument_token FROM mytable WHERE admin_access = 1 ";
+				$query = "SELECT * FROM watch_list WHERE client_id = 8 ";
 				$data = $this->db->query($query)->result();
-				print_r(json_encode($data));
+				$inst = json_decode($data[0]->list);
+				$inst2 = json_decode($data[0]->list2);
+				$token_values = array();
+				foreach ($inst->instrument_token as $d) {
+					$token_values[]['instrument_token'] = $d;
+				}
+
+				foreach ($inst2->instrument_token as $d) {
+					$token_values[]['instrument_token'] = $d;
+				}
+                // $data = json_decode($data,true);
+				print_r(json_encode($token_values));
 		
 	}
 

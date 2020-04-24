@@ -245,3 +245,15 @@ a.header-icon.header-icon-5 {
 .header-clear-medium .table-responsive.tab-inner {
 width: 100%;
 }
+.swiper-slide{
+  flex-wrap: wrap;
+}
+#fname{
+  flex: 0 0 100%;
+  max-width: 70%;
+    margin-top: 30px;
+    display: none;
+}
+.active-select{
+  display: block !important;
+}
