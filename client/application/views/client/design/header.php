@@ -11,10 +11,11 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/newDesign/styles/framework.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/newDesign/styles/style.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/newDesign/styles/fontawesome-all.min.css">
-		 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 		<!-- <link rel="manifest" href="_manifest.json" data-pwa-version="set_by_pwa.html"> -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css" integrity="sha256-DBYdrj7BxKM3slMeqBVWX2otx7x4eqoHRJCsSDJ0Nxw=" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css"  />
 		<link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url();?>assets/newDesign/app/icons/icon-192x192.png">
+		
+		 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 	</head>
 	<body class="theme-light" data-background="none" data-highlight="red2">
 		<div id="page">

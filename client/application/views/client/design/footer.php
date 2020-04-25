@@ -244,15 +244,15 @@
 				<script type="text/javascript" src="<?php echo base_url();?>assets/newDesign/scripts/custom.js"></script>
 <!-- 				<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 				    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
-				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-				    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+				    <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
 				</script>
 				<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
-				    integrity="sha256-NXRS8qVcmZ3dOv3LziwznUHPegFhPZ1F/4inU7uC8h0=" crossorigin="anonymous"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script> 
+		 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>  -->
+ 
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"
-				    integrity="sha256-4sETKhh3aSyi6NRiA+qunPaTawqSMDQca/xLWu27Hg4=" crossorigin="anonymous"></script>
+				
 				<script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 				<script src="<?php echo base_url(); ?>assets/js/ticker.js"></script>
 				<script type="text/javascript">
@@ -361,7 +361,7 @@
 		    				$('.menu-hider').addClass("menu-active");
 		    			});
 
-						$('#fn_2ame').select2({
+						/*$('#fn_2ame').select2({
               				minimumInputLength: 2,
 			              ajax: {
 			                  url: '<?php echo base_url();?>/Client/streaming',
@@ -391,12 +391,12 @@
 			              }
 
 
-			            });
+			            });*/
 
 			            $('.js-data-example-ajax').select2({
 					              minimumInputLength: 2,
 					              ajax: {
-					                  url: '<?php echo base_url();?>index.php/Dashboard/streaming',
+					                 url: '<?php echo base_url();?>/Client/streaming',
 					                  dataType: 'json',
 					                  type: "GET",
 					                  quietMillis: 50,

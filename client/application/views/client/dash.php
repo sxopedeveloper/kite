@@ -6,9 +6,9 @@
             </div>
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-             <select id="fn_2ame" class="js-data-example-ajax- form-control"></select>
-             <select class="js-data-example-ajax form-control"></select>
-  <!--   <div data-height="130" class="caption caption-margins round-medium shadow-huge" style="height: 130px;">
+             <select id="" class="js-data-example-ajax form-control"></select>
+            <!--  <select class="js-data-example-ajax form-control"></select>
+    <div data-height="130" class="caption caption-margins round-medium shadow-huge" style="height: 130px;">
         <div class="caption-center right-15 top-15 text-right">
             <a href="#" class="back-button button button-xs button-round-huge bg-highlight">Back Home</a>
         </div>
