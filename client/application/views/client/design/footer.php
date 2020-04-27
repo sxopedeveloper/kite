@@ -38,6 +38,7 @@
 				<div id="menu-settings" class="menu menu-box-bottom menu-box-detached round-large" 
 				    data-menu-effect="menu-over" data-menu-height="310">
 				    <div class="content bottom-0">
+				            <a href="#" class="" id="remove_inst"><i class="fa fa-trash"></i></a>
 				        <div class="menu-title main-menu-title">
 				            <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
 				        </div>
@@ -255,7 +256,7 @@
 				<script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 				<script src="<?php echo base_url(); ?>assets/js/ticker.js"></script>
 				<script type="text/javascript">
-					var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "3bRm0TjSPVVcQqB4ED8wvFNJE9uEO60c"});
+					var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "A98mmKxbMmhjVmxqtRQTFuE7tPWwFt2h"});
 					ticker.connect();
 					ticker.on("ticks", onTicks);
 					ticker.on("connect", subscribe);
@@ -307,12 +308,12 @@
 					            2));
 
 					        // Model 
-					        $("#myModal").find("#mod_tab tr").find("#" + value.instrument_token).find('.buy_p').text(((value.depth
+					        $("#menu-settings").find("#mod_tab tr").find("#" + value.instrument_token).find('.buy_p').text(((value.depth
 					            .buy[0].price).toFixed(2)));
-					        $("#myModal").find("#mod_tab tr").find("#" + value.instrument_token).find('.sell_p').text(((value.depth
+					        $("#menu-settings").find("#mod_tab tr").find("#" + value.instrument_token).find('.sell_p').text(((value.depth
 					            .buy[0].price).toFixed(2)));
 
-					        $("#myModal").find("." + value.instrument_token).find('.ltp').text(((value.last_price).toFixed(2)));
+					        $("#menu-settings").find("." + value.instrument_token).find('.ltp').text(((value.last_price).toFixed(2)));
 
 
 
@@ -348,8 +349,8 @@
 		    			$("#streamingTable1 >tbody>tr").click(function(){
 		    				$("#menu-settings").addClass("menu-active");
 
-		    				var scr_name = $(this).find(".script_name").text();
 		    				// console.log(scr_name);
+		    				var scr_name = $(this).find(".script_name").text();
 					        var scr_ex = $(this).find(".script_ex").text();
 					        var ins_token = $(this).closest('tr').attr('id');
 					        var buy_p = $(this).find('.buy_p').text();
@@ -364,7 +365,7 @@
 					        var chngrs = $(this).find(".chngrs").text();
 					        
 					        $("#menu-settings").find("#myModalLabel").text(scr_name);
-					        $("#myModal").find(".scr_ex").text(scr_ex);
+					        $("#menu-settings").find(".scr_ex").text(scr_ex);
 					        var title = "   <h5 class='modal-title' id='myModalLabel'>"+scr_name+"</h5>\n\
 					                        <p class='small mb-0 "+ins_token+"'>\n\
 					                            <span class='scr_ex'>"+scr_ex+"</span>\n\
@@ -389,11 +390,63 @@
 					                        <td><span class='hi'>"+hi+"</span></td>\n\
 					                        <td><span class='lo'>"+lo+"</span></td>\n\
 					                    </tr>";
-					        $("#myModal").find("#mod_tab tr").remove();            
-					        $("#myModal").find("#mod_tab").append(tab);
-					        $("#myModal").find("#title>h5").remove();
-					        $("#myModal").find("#title>p").remove();
-					        $("#myModal").find("#title").append(title);
+					        $("#menu-settings").find("#mod_tab tr").remove();            
+					        $("#menu-settings").find("#mod_tab").append(tab);
+					        $("#menu-settings").find("#title>h5").remove();
+					        $("#menu-settings").find("#title>p").remove();
+					        $("#menu-settings").find("#title").append(title);
+
+		    			});
+
+		    			$("#streamingTable2 >tbody>tr").click(function(){
+		    				$("#menu-settings").addClass("menu-active");
+
+		    				// console.log(scr_name);
+		    				var scr_name = $(this).find(".script_name").text();
+					        var scr_ex = $(this).find(".script_ex").text();
+					        var ins_token = $(this).closest('tr').attr('id');
+					        var buy_p = $(this).find('.buy_p').text();
+					        var buy_q = $(this).find('.buy_q').text();
+					        var sell_p = $(this).find('.sell_p').text();
+					        var sell_q = $(this).find('.sell_q').text();
+					        var hi = $(this).find('.high').text();
+					        var lo = $(this).find('.low').text();
+
+					        var ltp = $(this).find(".ltp").text();
+					        var chng = $(this).find(".chng").text();
+					        var chngrs = $(this).find(".chngrs").text();
+					        
+					        $("#menu-settings").find("#myModalLabel").text(scr_name);
+					        $("#menu-settings").find(".scr_ex").text(scr_ex);
+					        var title = "   <h5 class='modal-title' id='myModalLabel'>"+scr_name+"</h5>\n\
+					                        <p class='small mb-0 "+ins_token+"'>\n\
+					                            <span class='scr_ex'>"+scr_ex+"</span>\n\
+					                            <span class='text-danger mx-1 ltp'>"+ltp+"</span>\n\
+					                            <span><span class='chng'>"+chng+"</span> (<span class='chngrs'>"+chngrs+"</span>%)</span>\n\
+					                        </p>";
+					        var tab = "<tr class='text-black-50 small'>\n\
+					                        <td>BID</td>\n\
+					                        <td>ASK</td>\n\
+					                        <td>HIGH</td>\n\
+					                        <td>LOW</td>\n\
+					                    </tr>\n\
+					                    <tr id="+ins_token+" class='scr_rate'>\n\
+					                        <td class='text-success'>\n\
+					                            <span class='buy_p'>"+buy_p+"</span>\n\
+					                            <span class='small '>(<span class='buy_q'>"+buy_q+"</span>)</span>\n\
+					                        </td>\n\
+					                        <td class='text-danger'>\n\
+					                            <span class='sell_p'>"+sell_p+"</span>\n\
+					                            <span class='small'>(<span class='sell_q'>"+sell_q+"</span>)</span>\n\
+					                        </td>\n\
+					                        <td><span class='hi'>"+hi+"</span></td>\n\
+					                        <td><span class='lo'>"+lo+"</span></td>\n\
+					                    </tr>";
+					        $("#menu-settings").find("#mod_tab tr").remove();            
+					        $("#menu-settings").find("#mod_tab").append(tab);
+					        $("#menu-settings").find("#title>h5").remove();
+					        $("#menu-settings").find("#title>p").remove();
+					        $("#menu-settings").find("#title").append(title);
 
 		    			});
 
@@ -480,6 +533,67 @@
 			                  }
 			              });
 
+			            });
+
+
+			              $("#watch_two").click(function(){
+			              var token = $(".js-data-example-ajax").val();
+			              var name = ""; 
+			              name = $(".js-data-example-ajax").text();
+			              name = name.replace("NSE","");
+			              name = name.replace("BSE","");
+			              name = name.replace("MCX","");
+			              name = name.replace("NFO","");
+			              // $('#streamingTable1').append('<tr id='+token+'><td><i class="fa fa-bars"></i></td><td>'+name+'</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+
+			              let row = "<tr id="+token+">\n\
+                              <td>\n\
+                                  <span class='d-block script_name'>"+name+"</span>\n\
+                                  <span class='d-block small script_ex'>()</span>\n\
+                              </td>\n\
+                              <td>\n\
+                                  <span class='d-block text-danger'><img src='assets/images/caret-down.svg' alt=''/> <span class='ltp'>00.00</span></span>\n\
+                                  <span class='d-block small text-muted'><span class='chng'>0.00</span> (<span class='chngrs'>0.00</span>%)</span>\n\
+                              </td>\n\
+                              <td class='text-success'>\n\
+                                  <span class='d-block'><span class='buy_p'>0.00</span></span>\n\
+                                  <span class='d-block small'>(<span class='buy_q'>0.00</span>)</span>\n\
+                              </td>\n\
+                              <td class='text-danger'>\n\
+                                  <span class='d-block'><span class='sell_p'>0.00</span></span>\n\
+                                  <span class='d-block small'>(<span class='sell_q'>0.00</span>)</span>\n\
+                              </td>\n\
+                              <td>\n\
+                                  <span class='d-block small text-success'><img src='images/caret-up.svg' alt=''/> <span class='high'>0.00</span></span>\n\
+                                  <span class='d-block small text-danger'><img src='images/caret-down.svg' alt=''/> <span class='low'>0.00</span></span>\n\
+                              </td>\n\
+                              <td>\n\
+                                  <span class='d-block small'><span class='sopen'>0.00</span></span>\n\
+                                  <span class='d-block small'><span class='sclose'>0.00</span></span>\n\
+                              </td>\n\
+                          </tr>";
+			              $('#streamingTable2').append(row);
+                          $(".js-data-example-ajax").empty();
+
+
+			              $.ajax({
+			                  url: '<?php echo base_url();?>index.php/Client/watch_two',
+			                  data: { 'id' : token },
+			                  type: "post",
+			                  cache: false,
+			                  success: function (savingStatus) {
+			                      console.log("Added Success");
+			                      location.reload();
+			                  },
+			                  error: function (xhr, ajaxOptions, thrownError) {
+			                      console.log("Failed");
+			                  }
+			              });
+
+			            });
+
+					    $("#remove_inst").click(function(){
+			            	
 			            });
 				</script>
 				</body>

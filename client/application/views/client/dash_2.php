@@ -4,12 +4,12 @@
         <div class="container">
             <div class="form-group">
                 <select id="fname" class="js-data-example-ajax form-control" style="width:100%;"></select><hr/>
-                <button class="btn btn-danger btn-sm form-control" id="watch_one"><i class="fa fa-plus"></i> Add</button>
+                <button class="btn btn-danger btn-sm form-control" id="watch_two"><i class="fa fa-plus"></i> Add</button>
             </div>
         </div>
         <hr>
         <div class="table-responsive tab-inner">
-            <table class="streaming-table table table-borderless" id="streamingTable1">
+            <table class="streaming-table table table-borderless" id="streamingTable2">
                 <thead class="text-black-50 small" >
                 <tr>
                     <th>

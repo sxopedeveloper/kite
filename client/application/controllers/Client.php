@@ -31,7 +31,7 @@ class Client extends CI_Controller
 		$this->load->view('client/design/nav');
 		$data['list'] = $this->db->query("SELECT list FROM watch_list WHERE client_id = 8 ")->result();
 		// echo "<pre/>";
-        $a=json_decode($data['list'][0]->list);;
+        $a=json_decode($data['list'][0]->list);
         // print_r($a->instrument_token);
         foreach ($a->instrument_token as $token) {
         	$data['instu'][] = $this->db->query("SELECT * FROM mytable WHERE instrument_token = ".$token." ")->row();
@@ -45,9 +45,29 @@ class Client extends CI_Controller
 
 	}
 
+	public function watch_sec()
+	{
+		$title['title'] = "Dashboard"; 
+		$this->load->view('client/design/header',$title);
+		$this->load->view('client/design/nav');
+		$data['list'] = $this->db->query("SELECT list2 FROM watch_list WHERE client_id = 8 ")->result();
+		// echo "<pre/>";
+        $a=json_decode($data['list'][0]->list2);
+        // print_r($a->instrument_token);
+        foreach ($a->instrument_token as $token) {
+        	$data['instu'][] = $this->db->query("SELECT * FROM mytable WHERE instrument_token = ".$token." ")->row();
+        }
+  //       print_r($data['instu']);
+		// die();
+		// $data['list2'] = $this->db->query("SELECT list2 FROM watch_list WHERE client_id = 8 ")->result();
+		$this->load->view('client/dash_2',$data);
+		$this->load->view('client/design/footer');
+		// $this->load->view('client/layout/footer');
+
+	}
+
 	public function watch_one(){
 		$tok = $this->input->post('id');
-		// $tok = "123456";
 		$list = $this->db->query("SELECT list FROM watch_list WHERE client_id = 8 ")->result();
 		$a = json_decode($list[0]->list);
 		if(! in_array($tok,$a->instrument_token)){
@@ -63,11 +83,36 @@ class Client extends CI_Controller
 
 	}
 
-	public function watch_two(){
+	public function watch_one_remove(){
+
 		$tok = $this->input->post('id');
-		// $tok = "123456";
+		// $tok = "5633";
 		$list = $this->db->query("SELECT list FROM watch_list WHERE client_id = 8 ")->result();
 		$a = json_decode($list[0]->list);
+		if(in_array($tok,$a->instrument_token)){
+			foreach (array_keys($a->instrument_token, $tok, true) as $key) {
+			    unset($a->instrument_token[$key]);
+			}
+			$data = json_encode($a);
+
+			$sql = ("UPDATE watch_list SET list = '".$data."' WHERE client_id= 8 ");
+			$this->db->query($sql);
+		}else{
+			echo " Not Found";
+			redirect('Client', 'refresh');
+		}
+		
+			redirect('Client', 'refresh');
+	}
+
+	public function watch_two(){
+		$tok = $this->input->post('id');
+		// $tok = "5633";
+		$list = $this->db->query("SELECT list2 FROM watch_list WHERE client_id = 8 ")->result();
+		$a = json_decode($list[0]->list2);
+
+		// print_r($a);
+		// die();
 		if(! in_array($tok,$a->instrument_token)){
 			$b = array_push($a->instrument_token,$tok);
 			$data = json_encode($a);
@@ -75,9 +120,9 @@ class Client extends CI_Controller
 			echo "Found";
 		}
 
-		$sql = ("UPDATE watch_list SET list = '".$data."' WHERE client_id= 8 ");
+		$sql = ("UPDATE watch_list SET list2 = '".$data."' WHERE client_id= 8 ");
 		$this->db->query($sql);
-		redirect('Client', 'refresh');
+		redirect('Client/watch_sec', 'refresh');
 
 	}
 
