@@ -149,11 +149,11 @@ class Admin extends CI_Controller
 	public function add_client(){
 
 		$data = $this->input->post('data');
-		$sql = ("SELECT * FROM `script_group` WHERE id ='29' ");
-		$group = $this->db->query($sql)->result();
-		$data['s_limit'] = $group[0]->s_limit; 
-		$data['s_active'] = $group[0]->s_active; 
-		$data['s_single'] = $group[0]->s_single; 
+		// $sql = ("SELECT * FROM `script_group` WHERE id ='29' ");
+		// $group = $this->db->query($sql)->result();
+		// $data['s_limit'] = $group[0]->s_limit; 
+		// $data['s_active'] = $group[0]->s_active; 
+		// $data['s_single'] = $group[0]->s_single; 
 
 		// print_r($data);
 		// exit;
@@ -180,9 +180,23 @@ class Admin extends CI_Controller
 		
 		// print_r($data1);
 		// die();
-		$this->db->insert('users', $data1);
+			$this->db->insert('users', $data1);
 
-			$this->db->insert('clients', $data);
+			$sql = ("SELECT * FROM `users` WHERE email LIKE '".$email."'  ");
+			$token = $this->db->query($sql)->result();
+			$data['token'] = $token[0]->id;
+
+			$token = [
+			'client_id' => $data['token'],
+			'list' => '{"instrument_token":[]}',
+			'list2' => '{"instrument_token":[]}'
+			];
+			$this->db->insert('watch_list', $token);
+
+			// print_r($data['token']);
+			// die();
+
+			// $this->db->insert('clients', $data);
 			redirect ('Admin/client_list');
 
 	}
