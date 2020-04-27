@@ -30,10 +30,54 @@ class Client extends CI_Controller
 		$this->load->view('client/design/header',$title);
 		$this->load->view('client/design/nav');
 		$data['list'] = $this->db->query("SELECT list FROM watch_list WHERE client_id = 8 ")->result();
-		$data['list2'] = $this->db->query("SELECT list2 FROM watch_list WHERE client_id = 8 ")->result();
+		// echo "<pre/>";
+        $a=json_decode($data['list'][0]->list);;
+        // print_r($a->instrument_token);
+        foreach ($a->instrument_token as $token) {
+        	$data['instu'][] = $this->db->query("SELECT * FROM mytable WHERE instrument_token = ".$token." ")->row();
+        }
+  //       print_r($data['instu']);
+		// die();
+		// $data['list2'] = $this->db->query("SELECT list2 FROM watch_list WHERE client_id = 8 ")->result();
 		$this->load->view('client/dash',$data);
 		$this->load->view('client/design/footer');
 		// $this->load->view('client/layout/footer');
+
+	}
+
+	public function watch_one(){
+		$tok = $this->input->post('id');
+		// $tok = "123456";
+		$list = $this->db->query("SELECT list FROM watch_list WHERE client_id = 8 ")->result();
+		$a = json_decode($list[0]->list);
+		if(! in_array($tok,$a->instrument_token)){
+			$b = array_push($a->instrument_token,$tok);
+			$data = json_encode($a);
+		}else{
+			echo "Found";
+		}
+
+		$sql = ("UPDATE watch_list SET list = '".$data."' WHERE client_id= 8 ");
+		$this->db->query($sql);
+		redirect('Client', 'refresh');
+
+	}
+
+	public function watch_two(){
+		$tok = $this->input->post('id');
+		// $tok = "123456";
+		$list = $this->db->query("SELECT list FROM watch_list WHERE client_id = 8 ")->result();
+		$a = json_decode($list[0]->list);
+		if(! in_array($tok,$a->instrument_token)){
+			$b = array_push($a->instrument_token,$tok);
+			$data = json_encode($a);
+		}else{
+			echo "Found";
+		}
+
+		$sql = ("UPDATE watch_list SET list = '".$data."' WHERE client_id= 8 ");
+		$this->db->query($sql);
+		redirect('Client', 'refresh');
 
 	}
 
@@ -47,7 +91,7 @@ class Client extends CI_Controller
 				// $data = $this->db->query($query)->result();
 				// print_r(json_encode($data));
 
-				$query = "SELECT * FROM mytable WHERE tradingsymbol LIKE '%".$term."%' LIMIT 25 ";
+				$query = "SELECT * FROM mytable WHERE admin_access = 1 AND  tradingsymbol LIKE '%".$term."%' LIMIT 25 ";
 				$data = $this->db->query($query)->result();
 				print_r(json_encode($data));
 			

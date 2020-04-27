@@ -31,7 +31,6 @@
 			<a href="#" data-toggle-theme-switch="" class="header-icon header-icon-4"><i class="fa fa-lightbulb-o"></i></a>
 
 		</div>
-		<!-- <div class="header-search"> -->
+		<div class="header-search">
 			<!-- <input type="text" id="fname" placeholder="ADD SCRIPT" name="fname"> -->
-            <!-- <select id="fname" class="js-data-example-ajax form-control"></select> -->
-		<!-- </div> -->
+		</div>

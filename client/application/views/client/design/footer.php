@@ -1,4 +1,4 @@
-				<div id="menu-call" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="340"
+				<!-- <div id="menu-call" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="340"
 				    data-menu-effect="menu-over">
 				    <div class="content bottom-0">
 				        <div class="menu-title">
@@ -33,24 +33,23 @@
 				            </a>
 				        </div>
 				    </div>
-				</div>
+				</div> -->
 
 				<div id="menu-settings" class="menu menu-box-bottom menu-box-detached round-large" 
 				    data-menu-effect="menu-over" data-menu-height="310">
 				    <div class="content bottom-0">
 				        <div class="menu-title main-menu-title">
-				             <a href="#" class="close-menu"><i
-				                    class="fa fa-times"></i></a>
+				            <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
 				        </div>
 				        <div class="modal-content-main">
 				            <div class="modal-header-main">
 				                <div id="title">
-				                    <h5 class="modal-title" id="myModalLabel">CRUDEOILM DEC FUT</h5>
-                    <p class="small mb-0">
-                        <span class="scr_ex">MCX</span>
-                        <span class="text-danger mx-1 ltp">4150.00</span>
-                        <span>-4.00 (-0.07%)</span>
-                    </p>
+					                <h5 class="modal-title" id="myModalLabel">CRUDEOILM DEC FUT</h5>
+				                    <p class="small mb-0">
+				                        <span class="scr_ex">MCX</span>
+				                        <span class="text-danger mx-1 ltp">4150.00</span>
+				                        <span>-4.00 (-0.07%)</span>
+				                    </p>
 				                </div> 
 				            </div>
 				            <form class="modal-body-main">
@@ -83,7 +82,7 @@
 				    </div>
 				</div>
 				
-				<div id="menu-highlights" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="380"
+				<!-- <div id="menu-highlights" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="380"
 				    data-menu-effect="menu-over">
 				    <div class="content bottom-0">
 				        <div class="menu-title">
@@ -236,9 +235,9 @@
 				            later</a>
 				        <i class="fa-ios-arrow fa fa-caret-down font-40"></i>
 				    </div>
-				</div>
-				<div class="menu-hider"></div>
-				</div>
+				</div> -->
+				<!-- <div class="menu-hider"></div>
+				</div> -->
 				<script type="text/javascript" src="<?php echo base_url();?>assets/newDesign/scripts/jquery.js"></script>
 				<script type="text/javascript" src="<?php echo base_url();?>assets/newDesign/scripts/plugins.js"></script>
 				<script type="text/javascript" src="<?php echo base_url();?>assets/newDesign/scripts/custom.js"></script>
@@ -256,7 +255,7 @@
 				<script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 				<script src="<?php echo base_url(); ?>assets/js/ticker.js"></script>
 				<script type="text/javascript">
-					var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "QuCIOLLC454YxoF0eKR1v6FS6PPCaYl9"});
+					var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "3bRm0TjSPVVcQqB4ED8wvFNJE9uEO60c"});
 					ticker.connect();
 					ticker.on("ticks", onTicks);
 					ticker.on("connect", subscribe);
@@ -343,55 +342,60 @@
 					    });
 					}
 				</script>
+
 				<script type="text/javascript">
-
-						// $("#addNew").click(function(){
-		    //               var token = $(".js-data-example-ajax").val();
-		    //               add_script(token);
-		    //               var name = ""; 
-		    //               name = $(".js-data-example-ajax").text();
-		    //               name = name.replace("NSE","");
-		    //               name = name.replace("BSE","");
-		    //               name = name.replace("MCX","");
-		    //               $('#streamingTable1').append('<tr id='+token+'><td><i class="fa fa-trash"></i></td><td>'+name+'</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
-		    //               $(".js-data-example-ajax").empty();
-		    //             });
-		    			$("#streamingTable1 >tbody").click(function(){
+		    			
+		    			$("#streamingTable1 >tbody>tr").click(function(){
 		    				$("#menu-settings").addClass("menu-active");
-		    				$('.menu-hider').addClass("menu-active");
+
+		    				var scr_name = $(this).find(".script_name").text();
+		    				// console.log(scr_name);
+					        var scr_ex = $(this).find(".script_ex").text();
+					        var ins_token = $(this).closest('tr').attr('id');
+					        var buy_p = $(this).find('.buy_p').text();
+					        var buy_q = $(this).find('.buy_q').text();
+					        var sell_p = $(this).find('.sell_p').text();
+					        var sell_q = $(this).find('.sell_q').text();
+					        var hi = $(this).find('.high').text();
+					        var lo = $(this).find('.low').text();
+
+					        var ltp = $(this).find(".ltp").text();
+					        var chng = $(this).find(".chng").text();
+					        var chngrs = $(this).find(".chngrs").text();
+					        
+					        $("#menu-settings").find("#myModalLabel").text(scr_name);
+					        $("#myModal").find(".scr_ex").text(scr_ex);
+					        var title = "   <h5 class='modal-title' id='myModalLabel'>"+scr_name+"</h5>\n\
+					                        <p class='small mb-0 "+ins_token+"'>\n\
+					                            <span class='scr_ex'>"+scr_ex+"</span>\n\
+					                            <span class='text-danger mx-1 ltp'>"+ltp+"</span>\n\
+					                            <span><span class='chng'>"+chng+"</span> (<span class='chngrs'>"+chngrs+"</span>%)</span>\n\
+					                        </p>";
+					        var tab = "<tr class='text-black-50 small'>\n\
+					                        <td>BID</td>\n\
+					                        <td>ASK</td>\n\
+					                        <td>HIGH</td>\n\
+					                        <td>LOW</td>\n\
+					                    </tr>\n\
+					                    <tr id="+ins_token+" class='scr_rate'>\n\
+					                        <td class='text-success'>\n\
+					                            <span class='buy_p'>"+buy_p+"</span>\n\
+					                            <span class='small '>(<span class='buy_q'>"+buy_q+"</span>)</span>\n\
+					                        </td>\n\
+					                        <td class='text-danger'>\n\
+					                            <span class='sell_p'>"+sell_p+"</span>\n\
+					                            <span class='small'>(<span class='sell_q'>"+sell_q+"</span>)</span>\n\
+					                        </td>\n\
+					                        <td><span class='hi'>"+hi+"</span></td>\n\
+					                        <td><span class='lo'>"+lo+"</span></td>\n\
+					                    </tr>";
+					        $("#myModal").find("#mod_tab tr").remove();            
+					        $("#myModal").find("#mod_tab").append(tab);
+					        $("#myModal").find("#title>h5").remove();
+					        $("#myModal").find("#title>p").remove();
+					        $("#myModal").find("#title").append(title);
+
 		    			});
-
-						/*$('#fn_2ame').select2({
-              				minimumInputLength: 2,
-			              ajax: {
-			                  url: '<?php echo base_url();?>/Client/streaming',
-			                  dataType: 'json',
-			                  type: "GET",
-			                  quietMillis: 50,
-			                  data: function (params) {
-			                    var query = {
-			                      // segm: $("#segment").val(),
-			                      search: params.term
-			                    }
-			                    // Query parameters will be ?search=[term]&type=public
-			                    return query;
-			                  },
-			                  processResults: function (data) {
-			                  	return {
-			                        results: $.map(data, function (item) {
-			                           console.log(item);
-			                            return {
-			                                text: item.segment+" "+item.tradingsymbol,
-			                                slug: item.segment,
-			                                id: item.instrument_token
-			                            }
-			                        })
-			                    };
-			                }
-			              }
-
-
-			            });*/
 
 			            $('.js-data-example-ajax').select2({
 					              minimumInputLength: 2,
@@ -410,9 +414,9 @@
 					                  processResults: function (data) {
 					                    return {
 					                        results: $.map(data, function (item) {
-					                          //console.log(item);
+					                          // console.log(item);
 					                            return {
-					                                text: item.exchange+" "+item.name,
+					                                text: item.exchange+" "+item.tradingsymbol,
 					                                slug: item.exchange,
 					                                id: item.instrument_token
 					                            }
@@ -420,7 +424,63 @@
 					                    };
 					                }
 					              }
-					            });
+					    });
+
+					    $("#watch_one").click(function(){
+			              var token = $(".js-data-example-ajax").val();
+			              var name = ""; 
+			              name = $(".js-data-example-ajax").text();
+			              name = name.replace("NSE","");
+			              name = name.replace("BSE","");
+			              name = name.replace("MCX","");
+			              name = name.replace("NFO","");
+			              // $('#streamingTable1').append('<tr id='+token+'><td><i class="fa fa-bars"></i></td><td>'+name+'</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+
+			              let row = "<tr id="+token+">\n\
+                              <td>\n\
+                                  <span class='d-block script_name'>"+name+"</span>\n\
+                                  <span class='d-block small script_ex'>()</span>\n\
+                              </td>\n\
+                              <td>\n\
+                                  <span class='d-block text-danger'><img src='assets/images/caret-down.svg' alt=''/> <span class='ltp'>00.00</span></span>\n\
+                                  <span class='d-block small text-muted'><span class='chng'>0.00</span> (<span class='chngrs'>0.00</span>%)</span>\n\
+                              </td>\n\
+                              <td class='text-success'>\n\
+                                  <span class='d-block'><span class='buy_p'>0.00</span></span>\n\
+                                  <span class='d-block small'>(<span class='buy_q'>0.00</span>)</span>\n\
+                              </td>\n\
+                              <td class='text-danger'>\n\
+                                  <span class='d-block'><span class='sell_p'>0.00</span></span>\n\
+                                  <span class='d-block small'>(<span class='sell_q'>0.00</span>)</span>\n\
+                              </td>\n\
+                              <td>\n\
+                                  <span class='d-block small text-success'><img src='images/caret-up.svg' alt=''/> <span class='high'>0.00</span></span>\n\
+                                  <span class='d-block small text-danger'><img src='images/caret-down.svg' alt=''/> <span class='low'>0.00</span></span>\n\
+                              </td>\n\
+                              <td>\n\
+                                  <span class='d-block small'><span class='sopen'>0.00</span></span>\n\
+                                  <span class='d-block small'><span class='sclose'>0.00</span></span>\n\
+                              </td>\n\
+                          </tr>";
+			              $('#streamingTable1').append(row);
+                          $(".js-data-example-ajax").empty();
+
+
+			              $.ajax({
+			                  url: '<?php echo base_url();?>index.php/Client/watch_one',
+			                  data: { 'id' : token },
+			                  type: "post",
+			                  cache: false,
+			                  success: function (savingStatus) {
+			                      console.log("Added Success");
+			                      location.reload();
+			                  },
+			                  error: function (xhr, ajaxOptions, thrownError) {
+			                      console.log("Failed");
+			                  }
+			              });
+
+			            });
 				</script>
 				</body>
 

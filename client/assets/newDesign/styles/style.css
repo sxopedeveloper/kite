@@ -257,3 +257,6 @@ width: 100%;
 .active-select{
   display: block !important;
 }
+.header, #footer-menu, .tab-main{
+  transform: inherit !important;
+}

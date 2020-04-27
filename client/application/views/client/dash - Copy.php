@@ -36,7 +36,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                            foreach ($instrument_token as $inst) {
+                                    foreach ($instrument_token as $inst) {
                                     echo "<tr id='".$inst->instrument_token."'>
                                             <td >
                                                 <span class='d-block script_name'>".$inst->tradingsymbol."</span>
