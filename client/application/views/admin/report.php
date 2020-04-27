@@ -16,7 +16,6 @@
                                 <thead>
                                     <tr>
                                         <th>UserID</th>
-                                        <th>Transection ID</th>
                                         <th>Market</th>
                                         <th>SCRIPT</th>
                                         <th>QTY</th>
@@ -27,7 +26,6 @@
                                 <?php foreach ($users as $user):?>
                                     <tr>
                                         <td><?php echo htmlspecialchars($user->client_id,ENT_QUOTES,'UTF-8');?></td>
-                                        <td><?php echo htmlspecialchars($user->trans_id,ENT_QUOTES,'UTF-8');?></td>
                                         <td><?php echo htmlspecialchars($user->market,ENT_QUOTES,'UTF-8');?></td>
                                         <td><?php echo htmlspecialchars($user->script,ENT_QUOTES,'UTF-8');?></td>
                                         <td><?php echo htmlspecialchars($user->qty,ENT_QUOTES,'UTF-8');?></td>

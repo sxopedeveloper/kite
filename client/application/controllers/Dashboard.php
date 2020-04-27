@@ -83,13 +83,19 @@ class Dashboard extends CI_Controller
 		$mode = $this->input->post('mode');
 		$buy_p = $this->input->post('buy_p');
 		$buy_qty = $this->input->post('buy_qty');
+		$exc = $this->input->post('exc');
+
+		$exc = str_replace("(","",$exc);
+		$exc = str_replace(")","",$exc);
+
+		$time = date("Y-m-d H:i:s");
 
 		$client = $this->ion_auth->get_user_id();
 
 		if($mode=="BUY"){
-			$query = ("INSERT INTO `orders`(`market`, `script`, `client_id`, `amount`, `qty`, `trade_time`, `broker_id`, `Total`, `Net`, `Show`, `type_flag`, `show_ord`) VALUES ('TEMP',".$token.",".$client.",".$buy_p.",".$buy_qty.",".time().",'1',".($buy_p*$buy_qty).",'','','','')");
+			$query = ("INSERT INTO `orders`(`market`, `script`, `client_id`, `amount`, `qty`, `trade_time`, `broker_id`, `Total`, `Net`, `Show`, `type_flag`, `show_ord`) VALUES ('".$exc."',".$token.",".$client.",".$buy_p.",".$buy_qty.",'".$time."','1',".($buy_p*$buy_qty).",'','','','')");
 		}else{
-			$query = ("INSERT INTO `orders`(`market`, `script`, `client_id`, `amount`, `qty`, `trade_time`, `broker_id`, `Total`, `Net`, `Show`, `type_flag`, `show_ord`) VALUES ('TEMP',".$token.",".$client.",".$buy_p.",'-".$buy_qty."',".time().",'1',".($buy_p*$buy_qty).",'','','','')");
+			$query = ("INSERT INTO `orders`(`market`, `script`, `client_id`, `amount`, `qty`, `trade_time`, `broker_id`, `Total`, `Net`, `Show`, `type_flag`, `show_ord`) VALUES ('".$exc."',".$token.",".$client.",".$buy_p.",'-".$buy_qty."','".$time."','1',".($buy_p*$buy_qty).",'','','','')");
 
 		}
 		
