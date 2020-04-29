@@ -182,11 +182,26 @@ class Client extends CI_Controller
 
 	    $query = ("SELECT orders.*, mytable.tradingsymbol FROM `orders` INNER JOIN mytable ON orders.script = mytable.instrument_token WHERE orders.client_id = ".$this->ion_auth->get_user_id()." ORDER BY `orders`.`trans_id` DESC");
 		$data['users'] = $this->db->query($query)->result();
-		//$this->load->view("admin/layout/header");
-		// $this->load->view("admin/layout/sidebar");
+
 		$this->load->view("client/report",$data);
 		$this->load->view('client/design/footer');
-		//$this->load->view("admin/layout/footer");
+	}
+
+	public function position(){
+
+		$title['title'] = "Dashboard"; 
+		$this->load->view('client/design/header',$title);
+		$this->load->view('client/design/nav');
+
+
+	    $query = ("SELECT orders.*, sum(orders.qty) AS total, mytable.tradingsymbol,mytable.instrument_token FROM `orders` INNER JOIN mytable ON orders.script = mytable.instrument_token WHERE orders.client_id = ".$this->ion_auth->get_user_id()." ORDER BY `orders`.`trans_id` DESC");
+		$data['users'] = $this->db->query($query)->result();
+
+		// print_r($data['users']);
+		// die();
+
+		$this->load->view("client/position",$data);
+		$this->load->view('client/design/footer');
 	}
 
 	public function limit(){
@@ -196,11 +211,10 @@ class Client extends CI_Controller
 		$this->load->view('client/design/nav');
 	    $query = ("SELECT orders2.*, mytable.tradingsymbol FROM `orders2` INNER JOIN mytable ON orders2.script = mytable.instrument_token WHERE orders2.client_id = ".$this->ion_auth->get_user_id()." ORDER BY `orders2`.`trans_id` DESC");
 		$data['users'] = $this->db->query($query)->result();
-		//$this->load->view("admin/layout/header");
-		// $this->load->view("admin/layout/sidebar");
+		
 		$this->load->view("client/limit",$data);
 		$this->load->view('client/design/footer');
-		//$this->load->view("admin/layout/footer");
+		
 	}
 
 	

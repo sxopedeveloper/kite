@@ -1,1 +1,2 @@
-admin/application/config/config.php
+admin/application/config/*
+client/application/config/*
