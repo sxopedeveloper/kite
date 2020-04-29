@@ -68,7 +68,6 @@
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha256-NXRS8qVcmZ3dOv3LziwznUHPegFhPZ1F/4inU7uC8h0=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-   
     $(".dataTable").dataTable({
         scrollY: 300,
         paging: false
@@ -84,7 +83,7 @@
 
   
 <script type="text/javascript">
-var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "QuCIOLLC454YxoF0eKR1v6FS6PPCaYl9"});
+var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "nZ1PWs6CVHTE8rzflaOrGw00oK5kGSL0"});
 ticker.connect();
 ticker.on("ticks", onTicks);
 ticker.on("connect", subscribe);

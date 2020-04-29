@@ -1,39 +1,36 @@
-				<!-- <div id="menu-call" class="menu menu-box-bottom menu-box-detached round-large" data-menu-height="340"
-				    data-menu-effect="menu-over">
+				<div id="user-settings" class="menu menu-box-bottom menu-box-detached round-large" 
+				    data-menu-effect="menu-over" data-menu-height="210">
 				    <div class="content bottom-0">
-				        <div class="menu-title">
-				            <h1>Tap to Call</h1>
-				            <p class="color-highlight">Select your Departament by Tapping.</p><a href="#" class="close-menu"><i
-				                    class="fa fa-times"></i></a>
+				        <div class="menu-title main-menu-title">
+				            <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
 				        </div>
-				        <div class="divider bottom-0"></div>
-				        <div class="link-list link-list-1 bottom-0">
-				            <a href="#">
-				                <i class="fa fa-credit-card color-red1-dark"></i>
-				                <span class="font-13">Sales</span>
-				                <em class="bg-highlight">TAP TO CALL</em>
-				            </a>
-				            <a href="#">
-				                <i class="font-15 fa fa-building color-blue2-dark"></i>
-				                <span class="font-13">Office</span>
-				                <em class="bg-highlight">TAP TO CALL</em>
-				            </a>
-				            <a href="#">
-				                <i class="font-15 fa fa-life-ring color-brown2-dark"></i>
-				                <span class="font-13">Support</span>
-				                <em class="bg-highlight">TAP TO CALL</em>
-				            </a>
-				            <a href="#">
-				                <i class="font-12 fa fa-truck color-magenta2-dark"></i>
-				                <span class="font-13">Shipping</span> 
-				                <em class="bg-highlight">TAP TO CALL</em>
-				            </a>
-				            <a href="#" class="center-text no-border">
-				                <span class="font-12 right-10">Monday to Friday - 09:00AM - 05:00PM</span>
-				            </a>
+				        <div class="modal-content-main">
+				            <div class="modal-header-main">
+				                <div id="title">
+					                <h5 class="modal-title" id="">User Menu</h5>
+				                    <p class="small mb-0">
+				                        <span class="scr_ex">User additional settings</span>
+				                    </p>
+				                </div> 
+				            </div>
+
+				            <div class="container">
+					            <div class="form-group">
+					            	<br/>
+					                <!-- <select id="fname" class="js-data-example-ajax form-control" style="width:100%;"></select><hr/> -->
+					                <!-- <button class="btn btn-danger btn-sm form-control" id="watch_one"><i class="fa fa-plus"></i> Add</button> -->
+				                	<a href="#" class="btn btn-success btn-sm form-control">Edit Profile</a>
+					            	&nbsp;
+				                	<a href="<?php echo base_url();?>auth/logout" class="btn btn-danger btn-sm form-control">Logout</a>
+					            </div>
+					        </div>
+				          
 				        </div>
+				                <!-- <div class="row">
+				                	<button class="btn btn-sm btn-primary">User Profile change</button>
+				                </div> -->
 				    </div>
-				</div> -->
+				</div>
 
 				<div id="menu-settings" class="menu menu-box-bottom menu-box-detached round-large" 
 				    data-menu-effect="menu-over" data-menu-height="310">
@@ -70,7 +67,7 @@
 				                        </div>
 				                        <div class="form-group flex-grow-1 ml-2">
 				                            <input type="number" class="form-control" id="price" placeholder="Price"
-				                                autocomplete="disabled" disabled>
+				                                autocomplete="disabled" >
 				                            <!-- <label for="price">Price</label> -->
 				                        </div>
 				                    </div>
@@ -100,7 +97,7 @@
 				<script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 				<script src="<?php echo base_url(); ?>assets/js/ticker.js"></script>
 				<script type="text/javascript">
-					var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "A98mmKxbMmhjVmxqtRQTFuE7tPWwFt2h"});
+					var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "nZ1PWs6CVHTE8rzflaOrGw00oK5kGSL0"});
 					ticker.connect();
 					ticker.on("ticks", onTicks);
 					ticker.on("connect", subscribe);
@@ -331,58 +328,58 @@
 					    });
 
 					    $("#watch_one").click(function(){
-			              var token = $(".js-data-example-ajax").val();
-			              var name = ""; 
-			              name = $(".js-data-example-ajax").text();
-			              name = name.replace("NSE","");
-			              name = name.replace("BSE","");
-			              name = name.replace("MCX","");
-			              name = name.replace("NFO","");
-			              // $('#streamingTable1').append('<tr id='+token+'><td><i class="fa fa-bars"></i></td><td>'+name+'</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+				              var token = $(".js-data-example-ajax").val();
+				              var name = ""; 
+				              name = $(".js-data-example-ajax").text();
+				              name = name.replace("NSE","");
+				              name = name.replace("BSE","");
+				              name = name.replace("MCX","");
+				              name = name.replace("NFO","");
+				              // $('#streamingTable1').append('<tr id='+token+'><td><i class="fa fa-bars"></i></td><td>'+name+'</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 
-			              let row = "<tr id="+token+">\n\
-                              <td>\n\
-                                  <span class='d-block script_name'>"+name+"</span>\n\
-                                  <span class='d-block small script_ex'>()</span>\n\
-                              </td>\n\
-                              <td>\n\
-                                  <span class='d-block text-danger'><img src='assets/images/caret-down.svg' alt=''/> <span class='ltp'>00.00</span></span>\n\
-                                  <span class='d-block small text-muted'><span class='chng'>0.00</span> (<span class='chngrs'>0.00</span>%)</span>\n\
-                              </td>\n\
-                              <td class='text-success'>\n\
-                                  <span class='d-block'><span class='buy_p'>0.00</span></span>\n\
-                                  <span class='d-block small'>(<span class='buy_q'>0.00</span>)</span>\n\
-                              </td>\n\
-                              <td class='text-danger'>\n\
-                                  <span class='d-block'><span class='sell_p'>0.00</span></span>\n\
-                                  <span class='d-block small'>(<span class='sell_q'>0.00</span>)</span>\n\
-                              </td>\n\
-                              <td>\n\
-                                  <span class='d-block small text-success'><img src='images/caret-up.svg' alt=''/> <span class='high'>0.00</span></span>\n\
-                                  <span class='d-block small text-danger'><img src='images/caret-down.svg' alt=''/> <span class='low'>0.00</span></span>\n\
-                              </td>\n\
-                              <td>\n\
-                                  <span class='d-block small'><span class='sopen'>0.00</span></span>\n\
-                                  <span class='d-block small'><span class='sclose'>0.00</span></span>\n\
-                              </td>\n\
-                          </tr>";
-			              $('#streamingTable1').append(row);
-                          $(".js-data-example-ajax").empty();
+				              let row = "<tr id="+token+">\n\
+	                              <td>\n\
+	                                  <span class='d-block script_name'>"+name+"</span>\n\
+	                                  <span class='d-block small script_ex'>()</span>\n\
+	                              </td>\n\
+	                              <td>\n\
+	                                  <span class='d-block text-danger'><img src='/assets/images/caret-down.svg' alt=''/> <span class='ltp'>00.00</span></span>\n\
+	                                  <span class='d-block small text-muted'><span class='chng'>0.00</span> (<span class='chngrs'>0.00</span>%)</span>\n\
+	                              </td>\n\
+	                              <td class='text-success'>\n\
+	                                  <span class='d-block'><span class='buy_p'>0.00</span></span>\n\
+	                                  <span class='d-block small'>(<span class='buy_q'>0.00</span>)</span>\n\
+	                              </td>\n\
+	                              <td class='text-danger'>\n\
+	                                  <span class='d-block'><span class='sell_p'>0.00</span></span>\n\
+	                                  <span class='d-block small'>(<span class='sell_q'>0.00</span>)</span>\n\
+	                              </td>\n\
+	                              <td>\n\
+	                                  <span class='d-block small text-success'><img src='/assets/images/caret-up.svg' alt=''/> <span class='high'>0.00</span></span>\n\
+	                                  <span class='d-block small text-danger'><img src='/assets/images/caret-down.svg' alt=''/> <span class='low'>0.00</span></span>\n\
+	                              </td>\n\
+	                              <td>\n\
+	                                  <span class='d-block small'><span class='sopen'>0.00</span></span>\n\
+	                                  <span class='d-block small'><span class='sclose'>0.00</span></span>\n\
+	                              </td>\n\
+	                          </tr>";
+				              $('#streamingTable1').append(row);
+	                          $(".js-data-example-ajax").empty();
 
 
-			              $.ajax({
-			                  url: '<?php echo base_url();?>index.php/Client/watch_one',
-			                  data: { 'id' : token },
-			                  type: "post",
-			                  cache: false,
-			                  success: function (savingStatus) {
-			                      console.log("Added Success");
-			                      location.reload();
-			                  },
-			                  error: function (xhr, ajaxOptions, thrownError) {
-			                      console.log("Failed");
-			                  }
-			              });
+				              $.ajax({
+				                  url: '<?php echo base_url();?>index.php/Client/watch_one',
+				                  data: { 'id' : token },
+				                  type: "post",
+				                  cache: false,
+				                  success: function (savingStatus) {
+				                      console.log("Added Success");
+				                      location.reload();
+				                  },
+				                  error: function (xhr, ajaxOptions, thrownError) {
+				                      console.log("Failed");
+				                  }
+				              });
 
 			            });
 
@@ -415,8 +412,8 @@
                                   <span class='d-block small'>(<span class='sell_q'>0.00</span>)</span>\n\
                               </td>\n\
                               <td>\n\
-                                  <span class='d-block small text-success'><img src='images/caret-up.svg' alt=''/> <span class='high'>0.00</span></span>\n\
-                                  <span class='d-block small text-danger'><img src='images/caret-down.svg' alt=''/> <span class='low'>0.00</span></span>\n\
+                                  <span class='d-block small text-success'><img src='/assets/images/caret-up.svg' alt=''/> <span class='high'>0.00</span></span>\n\
+                                  <span class='d-block small text-danger'><img src='/assets/images/caret-down.svg' alt=''/> <span class='low'>0.00</span></span>\n\
                               </td>\n\
                               <td>\n\
                                   <span class='d-block small'><span class='sopen'>0.00</span></span>\n\
@@ -452,50 +449,122 @@
 				    $("#buy_s").click(function(){
 
 				      var token = ($("tr.scr_rate").attr('id'));
-				      var buy_price = $(".scr_rate > td > span.buy_p").text();
+				      var price = $(".scr_rate > td > span.buy_p").text();
 				      var exc = $("span.scr_ex").text();
-				      var share_qty = ($("#qty").val());
-				      $.ajax({
-				            type: "POST",
-				            url: '<?php echo base_url();?>index.php/Dashboard/sauda',
-				            data: {
-				              mode : 'BUY',
-				              token : token,
-				              buy_p : buy_price,
-				              buy_qty : share_qty,
-				              exc : exc
-				            },
-				            success: function (data) {
-				             console.log(data);
+				      var qty = ($("#qty").val());
+				      var hi = $(".scr_rate > td > span.hi").text();
+				      var lo = $(".scr_rate > td > span.lo").text();
 
-				            }
-				          });
+				      if($('#limit').is(":checked")){
+				      	var limit = $("#price").val();
+				      		console.log(limit);
+				      		if(limit>hi || limit<lo){
+				      			
+				      			$.ajax({
+					            type: "POST",
+					            url: '<?php echo base_url();?>index.php/Dashboard/limit_trade',
+					            data: {
+					              mode : 'BUY',
+					              token : ($("tr.scr_rate").attr('id')),
+					              price : limit,
+					              qty : qty,
+					              exc : exc
+					            },
+					            success: function (data) {
+					             
+						            alert("Limit Set Success");
+				                    location.reload();
+
+					            }
+
+					          });
+				      		}else{
+				      			alert("Limit Can not be set");
+				      			$("#price").focus();
+				      		}
+
+
+				      }else{
+
+					      $.ajax({
+					            type: "POST",
+					            url: '<?php echo base_url();?>index.php/Dashboard/sauda',
+					            data: {
+					              mode : 'BUY',
+					              token : token,
+					              price : price,
+					              qty : qty,
+					              exc : exc
+					            },
+					            success: function (data) {
+					             alert("Trade Success");
+			                     location.reload();
+
+					            }
+					          });
+				      }
 				      
 
 				    });
 
 				    $("#sell_s").click(function(){
 				        var token = ($("tr.scr_rate").attr('id'));
-					    var buy_price = $(".scr_rate > td > span.sell_p").text();
-					    var share_qty = ($("#qty").val());
+					    var price = $(".scr_rate > td > span.sell_p").text();
+					    var qty = ($("#qty").val());
 				      	var exc = $("span.scr_ex").text();
+				      	var hi = $(".scr_rate > td > span.hi").text();
+				      	var lo = $(".scr_rate > td > span.lo").text();
+
+				      	if($('#limit').is(":checked")){
+				      		var limit = $("#price").val();
+				      		console.log(limit);
+				      		if(limit>hi || limit<lo){
+				      			
+				      			$.ajax({
+					            type: "POST",
+					            url: '<?php echo base_url();?>index.php/Dashboard/limit_trade',
+					            data: {
+					              mode : 'SELL',
+					              token : ($("tr.scr_rate").attr('id')),
+					              price : limit,
+					              qty : qty,
+					              exc : exc
+					            },
+					            success: function (data) {
+					             
+						            alert("Limit Set Success");
+				                    location.reload();
+
+					            }
+
+					          });
+				      		}else{
+				      			alert("Limit Can not be set");
+				      			$("#price").focus();
+				      		}
+
+				      	}else{
+
+					      $.ajax({
+					            type: "POST",
+					            url: '<?php echo base_url();?>index.php/Dashboard/sauda',
+					            data: {
+					              mode : 'SELL',
+					              token : ($("tr.scr_rate").attr('id')),
+					              price : price,
+					              qty : qty,
+					              exc : exc
+					            },
+					            success: function (data) {
+					             
+					             alert("Trade Success");
+			                      location.reload();
+
+					            }
+
+					          });
+				      	}
 				      
-				      $.ajax({
-				            type: "POST",
-				            url: '<?php echo base_url();?>index.php/Dashboard/sauda',
-				            data: {
-				              mode : 'SELL',
-				              token : ($("tr.scr_rate").attr('id')),
-				              buy_p : $(".scr_rate > td > span.buy_p").text(),
-				              buy_qty : ($("#qty").val()),
-				              exc : exc
-				            },
-				            success: function (data) {
-				             console.log(data);
-
-				            }
-
-				          });
 
 				    });
 

@@ -178,11 +178,27 @@ class Client extends CI_Controller
 		$title['title'] = "Dashboard"; 
 		$this->load->view('client/design/header',$title);
 		$this->load->view('client/design/nav');
-	    $query = ("SELECT * FROM orders WHERE client_id = ".$this->ion_auth->get_user_id()." ORDER BY `orders`.`trans_id` DESC");
+
+
+	    $query = ("SELECT orders.*, mytable.tradingsymbol FROM `orders` INNER JOIN mytable ON orders.script = mytable.instrument_token WHERE orders.client_id = ".$this->ion_auth->get_user_id()." ORDER BY `orders`.`trans_id` DESC");
 		$data['users'] = $this->db->query($query)->result();
 		//$this->load->view("admin/layout/header");
 		// $this->load->view("admin/layout/sidebar");
 		$this->load->view("client/report",$data);
+		$this->load->view('client/design/footer');
+		//$this->load->view("admin/layout/footer");
+	}
+
+	public function limit(){
+
+		$title['title'] = "Dashboard"; 
+		$this->load->view('client/design/header',$title);
+		$this->load->view('client/design/nav');
+	    $query = ("SELECT orders2.*, mytable.tradingsymbol FROM `orders2` INNER JOIN mytable ON orders2.script = mytable.instrument_token WHERE orders2.client_id = ".$this->ion_auth->get_user_id()." ORDER BY `orders2`.`trans_id` DESC");
+		$data['users'] = $this->db->query($query)->result();
+		//$this->load->view("admin/layout/header");
+		// $this->load->view("admin/layout/sidebar");
+		$this->load->view("client/limit",$data);
 		$this->load->view('client/design/footer');
 		//$this->load->view("admin/layout/footer");
 	}

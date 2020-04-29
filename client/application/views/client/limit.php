@@ -1,11 +1,11 @@
 <div class="page-content header-clear-medium tab-main">
-        <div class="swiper-container table-slide">
+        <div class="table-slide">
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-11 card m-2 shadow">
                 <div class="m-2">
-                    <h1>Trade Report</h1>
-                    <p>Recent trades</p>
+                    <h1>Limit</h1>
+                    <p>Set trades limit</p>
 
                 </div>
                 <div class="row">

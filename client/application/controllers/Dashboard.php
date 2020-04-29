@@ -81,8 +81,8 @@ class Dashboard extends CI_Controller
 
 		$token = $this->input->post('token');
 		$mode = $this->input->post('mode');
-		$buy_p = $this->input->post('buy_p');
-		$buy_qty = $this->input->post('buy_qty');
+		$price = $this->input->post('price');
+		$qty = $this->input->post('qty');
 		$exc = $this->input->post('exc');
 
 		$exc = str_replace("(","",$exc);
@@ -93,9 +93,9 @@ class Dashboard extends CI_Controller
 		$client = $this->ion_auth->get_user_id();
 
 		if($mode=="BUY"){
-			$query = ("INSERT INTO `orders`(`market`, `script`, `client_id`, `amount`, `qty`, `trade_time`, `broker_id`, `Total`, `Net`, `Show`, `type_flag`, `show_ord`) VALUES ('".$exc."',".$token.",".$client.",".$buy_p.",".$buy_qty.",'".$time."','1',".($buy_p*$buy_qty).",'','','','')");
+			$query = ("INSERT INTO `orders`(`market`, `script`, `client_id`, `amount`, `qty`, `trade_time`, `broker_id`, `Total`, `Net`, `Show`, `type_flag`, `show_ord`) VALUES ('".$exc."',".$token.",".$client.",".$price.",".$qty.",'".$time."','1',".($price*$qty).",'','','','')");
 		}else{
-			$query = ("INSERT INTO `orders`(`market`, `script`, `client_id`, `amount`, `qty`, `trade_time`, `broker_id`, `Total`, `Net`, `Show`, `type_flag`, `show_ord`) VALUES ('".$exc."',".$token.",".$client.",".$buy_p.",'-".$buy_qty."','".$time."','1',".($buy_p*$buy_qty).",'','','','')");
+			$query = ("INSERT INTO `orders`(`market`, `script`, `client_id`, `amount`, `qty`, `trade_time`, `broker_id`, `Total`, `Net`, `Show`, `type_flag`, `show_ord`) VALUES ('".$exc."',".$token.",".$client.",".$price.",'-".$qty."','".$time."','1',".($price*$qty).",'','','','')");
 
 		}
 		
@@ -124,6 +124,33 @@ class Dashboard extends CI_Controller
 		// 	echo "Error In Dealing";
 		// }
 
+
+	}
+
+	public function limit_trade(){
+
+		$token = $this->input->post('token');
+		$mode = $this->input->post('mode');
+		$price = $this->input->post('price');
+		$qty = $this->input->post('qty');
+		$exc = $this->input->post('exc');
+
+		$exc = str_replace("(","",$exc);
+		$exc = str_replace(")","",$exc);
+
+		$time = date("Y-m-d H:i:s");
+
+		$client = $this->ion_auth->get_user_id();
+
+		if($mode=="BUY"){
+			$query = ("INSERT INTO `orders2`(`market`, `script`, `client_id`, `amount`, `qty`, `trade_time`, `broker_id`, `Total`, `Net`, `Show`, `type_flag`, `show_ord`) VALUES ('".$exc."',".$token.",".$client.",".$price.",".$qty.",'".$time."','1',".($price*$qty).",'','','','')");
+		}else{
+			$query = ("INSERT INTO `orders2`(`market`, `script`, `client_id`, `amount`, `qty`, `trade_time`, `broker_id`, `Total`, `Net`, `Show`, `type_flag`, `show_ord`) VALUES ('".$exc."',".$token.",".$client.",".$price.",'-".$qty."','".$time."','1',".($price*$qty).",'','','','')");
+
+		}
+		
+		$temp = $this->db->query($query);
+		return true;
 
 	}
 	public function streaming(){
