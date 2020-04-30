@@ -17,16 +17,22 @@
                                         <th>Market</th>
                                         <th>SCRIPT</th>
                                         <th>QTY</th>
+                                        <th>Rate</th>
                                         <th>Amount</th>
                                         <th>Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php foreach ($users as $user):?>
-                                    <tr>
+                                    <?php 
+                                        // print_r($user);
+                                        // die();
+                                    ?>
+                                    <tr class="<?php echo htmlspecialchars($user->script);?>">
                                         <td><?php echo htmlspecialchars($user->market,ENT_QUOTES,'UTF-8');?></td>
                                         <td><?php echo htmlspecialchars($user->tradingsymbol,ENT_QUOTES,'UTF-8');?></td>
                                         <td><?php echo htmlspecialchars($user->qty,ENT_QUOTES,'UTF-8');?></td>
+                                        <td><span class='ltp'>00.00</span></td>
                                         <td><?php echo htmlspecialchars($user->amount,ENT_QUOTES,'UTF-8');?></td>
                                         <td><?php echo htmlspecialchars($user->trade_time,ENT_QUOTES,'UTF-8');?></td>
                                     </tr>

@@ -83,7 +83,7 @@
 
   
 <script type="text/javascript">
-var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "nZ1PWs6CVHTE8rzflaOrGw00oK5kGSL0"});
+var ticker = new KiteTicker({api_key: "kbh3ereial04jcln", access_token: "fz66bxhgLjsrTUqQWs2bCKvZDX82Dy0Y"});
 ticker.connect();
 ticker.on("ticks", onTicks);
 ticker.on("connect", subscribe);

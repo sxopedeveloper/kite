@@ -29,7 +29,9 @@ class Client extends CI_Controller
 		$title['title'] = "Dashboard"; 
 		$this->load->view('client/design/header',$title);
 		$this->load->view('client/design/nav');
-		$data['list'] = $this->db->query("SELECT list FROM watch_list WHERE client_id = 8 ")->result();
+		$client = $this->ion_auth->get_user_id();
+
+		$data['list'] = $this->db->query("SELECT list FROM watch_list WHERE client_id = ".$client." ")->result();
 		// echo "<pre/>";
         $a=json_decode($data['list'][0]->list);
         // print_r($a->instrument_token);
@@ -50,7 +52,9 @@ class Client extends CI_Controller
 		$title['title'] = "Dashboard"; 
 		$this->load->view('client/design/header',$title);
 		$this->load->view('client/design/nav');
-		$data['list'] = $this->db->query("SELECT list2 FROM watch_list WHERE client_id = 8 ")->result();
+		$client = $this->ion_auth->get_user_id();
+
+		$data['list'] = $this->db->query("SELECT list2 FROM watch_list WHERE client_id = ".$client." ")->result();
 		// echo "<pre/>";
         $a=json_decode($data['list'][0]->list2);
         // print_r($a->instrument_token);
@@ -68,7 +72,8 @@ class Client extends CI_Controller
 
 	public function watch_one(){
 		$tok = $this->input->post('id');
-		$list = $this->db->query("SELECT list FROM watch_list WHERE client_id = 8 ")->result();
+		$client = $this->ion_auth->get_user_id();
+		$list = $this->db->query("SELECT list FROM watch_list WHERE client_id = ".$client." ")->result();
 		$a = json_decode($list[0]->list);
 		if(! in_array($tok,$a->instrument_token)){
 			$b = array_push($a->instrument_token,$tok);
@@ -87,7 +92,9 @@ class Client extends CI_Controller
 
 		$tok = $this->input->post('id');
 		// $tok = "5633";
-		$list = $this->db->query("SELECT list FROM watch_list WHERE client_id = 8 ")->result();
+		$client = $this->ion_auth->get_user_id();
+
+		$list = $this->db->query("SELECT list FROM watch_list WHERE client_id = ".$client." ")->result();
 		$a = json_decode($list[0]->list);
 		if(in_array($tok,$a->instrument_token)){
 			foreach (array_keys($a->instrument_token, $tok, true) as $key) {
@@ -108,7 +115,9 @@ class Client extends CI_Controller
 	public function watch_two(){
 		$tok = $this->input->post('id');
 		// $tok = "5633";
-		$list = $this->db->query("SELECT list2 FROM watch_list WHERE client_id = 8 ")->result();
+		$client = $this->ion_auth->get_user_id();
+
+		$list = $this->db->query("SELECT list2 FROM watch_list WHERE client_id = ".$client." ")->result();
 		$a = json_decode($list[0]->list2);
 
 		// print_r($a);
@@ -178,9 +187,10 @@ class Client extends CI_Controller
 		$title['title'] = "Dashboard"; 
 		$this->load->view('client/design/header',$title);
 		$this->load->view('client/design/nav');
+		$client = $this->ion_auth->get_user_id();
 
 
-	    $query = ("SELECT orders.*, mytable.tradingsymbol FROM `orders` INNER JOIN mytable ON orders.script = mytable.instrument_token WHERE orders.client_id = ".$this->ion_auth->get_user_id()." ORDER BY `orders`.`trans_id` DESC");
+	    $query = ("SELECT orders.*, mytable.tradingsymbol FROM `orders` INNER JOIN mytable ON orders.script = mytable.instrument_token WHERE orders.client_id = ".$client." ORDER BY `orders`.`trans_id` DESC");
 		$data['users'] = $this->db->query($query)->result();
 
 		$this->load->view("client/report",$data);
@@ -192,9 +202,10 @@ class Client extends CI_Controller
 		$title['title'] = "Dashboard"; 
 		$this->load->view('client/design/header',$title);
 		$this->load->view('client/design/nav');
+		$client = $this->ion_auth->get_user_id();
 
 
-	    $query = ("SELECT orders.*, sum(orders.qty) AS total, mytable.tradingsymbol,mytable.instrument_token FROM `orders` INNER JOIN mytable ON orders.script = mytable.instrument_token WHERE orders.client_id = ".$this->ion_auth->get_user_id()." ORDER BY `orders`.`trans_id` DESC");
+	    $query = ("SELECT orders.*, sum(orders.qty) AS total, mytable.tradingsymbol,mytable.instrument_token FROM `orders` INNER JOIN mytable ON orders.script = mytable.instrument_token WHERE orders.client_id = ".$client." ORDER BY `orders`.`trans_id` DESC");
 		$data['users'] = $this->db->query($query)->result();
 
 		// print_r($data['users']);
@@ -209,7 +220,9 @@ class Client extends CI_Controller
 		$title['title'] = "Dashboard"; 
 		$this->load->view('client/design/header',$title);
 		$this->load->view('client/design/nav');
-	    $query = ("SELECT orders2.*, mytable.tradingsymbol FROM `orders2` INNER JOIN mytable ON orders2.script = mytable.instrument_token WHERE orders2.client_id = ".$this->ion_auth->get_user_id()." ORDER BY `orders2`.`trans_id` DESC");
+		$client = $this->ion_auth->get_user_id();
+
+	    $query = ("SELECT orders2.*, mytable.tradingsymbol FROM `orders2` INNER JOIN mytable ON orders2.script = mytable.instrument_token WHERE orders2.client_id = ".$client." ORDER BY `orders2`.`trans_id` DESC");
 		$data['users'] = $this->db->query($query)->result();
 		
 		$this->load->view("client/limit",$data);
@@ -270,6 +283,16 @@ class Client extends CI_Controller
 		$sql = ("UPDATE mytable SET user_access=0 WHERE instrument_token=".$script." ");
 		$this->db->query($sql);
 		redirect('Client/sett', 'refresh');
+
+	}
+
+	public function api_token(){
+
+		$query = "SELECT auth_token FROM api_data WHERE is_active = 1";
+		$data = $this->db->query($query)->row();
+		// print_r($data->auth_token);
+		echo (json_encode($data->auth_token));
+	
 
 	}
 
